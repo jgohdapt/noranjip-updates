@@ -1,8 +1,17 @@
 {
   "schema": 1,
-  "phase": "immutable",
+  "phase": "promote",
   "repository": "jgohdapt/noranjip-updates",
   "version": "0.2.3.36",
-  "parent_commit": "bd92d7a37b5925691be40c687a563556f6433024",
-  "main_verification": null
+  "parent_commit": "a9936a6e827295e1f7d359ede9fc8fbb06aff66b",
+  "main_verification": {
+    "receipt_sha256": "C7E2BC5F7D9C5298CEB31F8D3FE9CFAAAAC73E501D900D64F1590924449869C7",
+    "rsa_verified": true,
+    "exact_six_files_verified": true,
+    "package_sha256": "443FA6B3491D1555B247DC3B26C5EF2950C56987163BEF721F9B73B8A8EE1466",
+    "manifest_sha256": "07CB345B7B075920CE8F02CF515D724FA1C7EF8869E81F46FA68CE13679204C2",
+    "release_id": 400818800,
+    "package_asset_id": 602901080,
+    "manifest_asset_id": 602901130
+  }
 }
