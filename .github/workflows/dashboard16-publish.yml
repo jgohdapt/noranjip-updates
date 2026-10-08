@@ -1,0 +1,34 @@
+name: Publish verified dashboard .16
+on:
+  push:
+    branches: [main]
+    paths: [.release/dashboard16/phase.json]
+permissions:
+  contents: write
+concurrency:
+  group: noranjip-dashboard-v2-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'jgohdapt/noranjip-updates' && github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Verify pinned publisher and run selected phase
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, os, re, urllib.request
+          repo = os.environ.get('GITHUB_REPOSITORY', '')
+          commit = os.environ.get('GITHUB_SHA', '')
+          if repo != 'jgohdapt/noranjip-updates' or not re.fullmatch(r'[0-9a-f]{40}', commit):
+              raise SystemExit('WORKFLOW_CONTEXT_REFUSED')
+          url = f'https://raw.githubusercontent.com/{repo}/{commit}/.release/dashboard16/publish_dashboard16.py'
+          with urllib.request.urlopen(url, timeout=30) as response:
+              source = response.read(131073)
+          if len(source) > 131072 or hashlib.sha256(source).hexdigest().upper() != '6BB216F1CB4EB87346F04E91B2987C8A3E54B033006D14FCDB5F2316268D7814':
+              raise SystemExit('PUBLISHER_HASH_REFUSED')
+          exec(compile(source, 'publish_dashboard16.py', 'exec'), {'__name__': '__main__'})
+          PY
