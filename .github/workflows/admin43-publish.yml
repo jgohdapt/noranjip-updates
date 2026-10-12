@@ -28,7 +28,7 @@ jobs:
           url = f'https://raw.githubusercontent.com/{repo}/{commit}/.release/admin43/publish_admin43.py'
           with urllib.request.urlopen(url, timeout=30) as response:
               source = response.read(131073)
-          if len(source) > 131072 or hashlib.sha256(source).hexdigest().upper() != '6685C52B89A3959381115153529AED60377A48E0A6E53E73CC253C5EEFCE95E0':
+          if len(source) > 131072 or hashlib.sha256(source).hexdigest().upper() != '1984BE7A432261CA468F483A381AC230C64FEDE7B8179ECEFBF0F15DAD3ADF5E':
               raise SystemExit('PUBLISHER_HASH_REFUSED')
           exec(compile(source, 'publish_admin43.py', 'exec'), {'__name__': '__main__'})
           PY

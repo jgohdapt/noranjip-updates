@@ -41,8 +41,8 @@ ARCHIVE35_SHA = "2AA6E6CF97BC29428FF26ED685F2FEFCE8B0380AD920C7A5AD2F30A6E0229BE
 FILE_NAMES = {"NoranJipAdmin.Admin.exe", "NoranJip.Foundation.Updates.dll", "NoranJip.Foundation.Service.dll", "NoranJip.ServicePersistence.dll", "NoranJip.ServiceRuntime.dll", "노란집 원격PC.exe"}
 FILES = None
 REMOTE_STABLE_ID = 387511440
-REMOTE_ASSETS_META_SHA = "D8FBFC2195A2674F5322EA89654E9180BAC8334858906FFFD1EF0D9F73EC0B33"
-REMOTE_MANIFEST_SHA = "2855D17D3DE9CE45C897C89DF7E6DE36829C827070725DA0E9AFB785A5F2C204"
+REMOTE_ASSETS_META_SHA = "AC7521D2EB1A178E53670E91D019E2F6E22DAACE2666EC8F6AA1E2E1D857C76A"
+REMOTE_MANIFEST_SHA = "7032853F0D611C51292DE59B541B4C598A2743BA98277DE48EC8980A5820F02E"
 
 
 class Refused(Exception):
@@ -233,7 +233,7 @@ class Client:
         require("remote-manifest.xml" in assets, "REMOTE_MANIFEST_REQUIRED")
         signed = ET.fromstring(self.bytes(assets["remote-manifest.xml"], REMOTE_MANIFEST_SHA))
         payload = ET.fromstring(base64.b64decode(signed.findtext("payload"), validate=True))
-        require(payload.get("version") == "0.8.1.52", "REMOTE52_CHANGED")
+        require(payload.get("version") == "0.8.1.53", "REMOTE53_CHANGED")
 
     def stable(self):
         release = self.release(STABLE_TAG)
