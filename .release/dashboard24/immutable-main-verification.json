@@ -1,0 +1,21 @@
+{
+  "Status": "PASS",
+  "CheckedUtc": "2026-10-12T09:50:30.4842755+00:00",
+  "Version": "0.1.24.0",
+  "StableVerified": false,
+  "IndependentPublicFullReadback": true,
+  "MainRSAValid": true,
+  "PublicResources": [
+    "NoranJip.Runtime.NoranJip.ExternalAdmin.Transport.dll",
+    "NoranJip.Brand.ico",
+    "NoranJip.Brand.png",
+    "NoranJip.Update.PublicKey"
+  ],
+  "PrivateResourcesPresent": false,
+  "package_sha256": "B54EEF0D73409B8D71330F8DAFB26059BFBA34D51CFB4C40AE65F2754A99B859",
+  "manifest_sha256": "F6BA30D8C6DA0A6C62D4FFD8E38D322364C1DD055C7D932666C9B44353893E5E",
+  "release_id": 410450807,
+  "package_asset_id": 633353136,
+  "manifest_asset_id": 633353188,
+  "LatestPreserved": true
+}
