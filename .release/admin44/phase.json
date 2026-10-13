@@ -1,9 +1,20 @@
 {
   "schema": 1,
-  "phase": "immutable",
+  "phase": "promote",
   "repository": "jgohdapt/noranjip-updates",
   "version": "0.2.3.44",
-  "parent_commit": "dddd82e5ad18c1e5a9aed059aad419cde487e8fe",
+  "parent_commit": "3e85af17d76df2cb97ed7f788ecd2d1a956fed29",
   "frozen_inputs_sha256": "D836E2A8A73372B1C476D3FC970BCD59FD1446AFDE7A89073BC4185CB059A2DD",
-  "main_verification": null
+  "main_verification": {
+    "receipt_sha256": "7E50C04FA4A73017F4D4ACFCF5AF38FE747EFD822332F5DBC2F568CE6287F7CA",
+    "rsa_verified": true,
+    "exact_six_files_verified": true,
+    "package_sha256": "07B387B209C6D920740DD0A014098913A37C1162F7B4620B53906509854114A9",
+    "manifest_sha256": "CD29ECC601B4F66BB8D433BC2316B8F752CA72C303CB15A1BFE51DB3B6A7E55E",
+    "release_id": 411427195,
+    "package_asset_id": 636314622,
+    "manifest_asset_id": 636314722,
+    "public_key_sha256": "D6245B3479BF7A997386F1A2BD4530FCA3887B5523A70B46191185E60CC90BA1",
+    "frozen_inputs_sha256": "D836E2A8A73372B1C476D3FC970BCD59FD1446AFDE7A89073BC4185CB059A2DD"
+  }
 }
