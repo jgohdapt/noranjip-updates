@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "phase": "immutable",
+  "repository": "jgohdapt/noranjip-updates",
+  "version": "0.2.3.44",
+  "parent_commit": "dddd82e5ad18c1e5a9aed059aad419cde487e8fe",
+  "frozen_inputs_sha256": "D836E2A8A73372B1C476D3FC970BCD59FD1446AFDE7A89073BC4185CB059A2DD",
+  "main_verification": null
+}
