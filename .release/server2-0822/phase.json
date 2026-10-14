@@ -1,4 +1,7 @@
 {
+  "phase": "promote",
   "frozen_sha256": "359B6D923EB1E29A088455D7F469F55CDE4EBBD3FA264BA006B1C830CCC4264F",
-  "phase": "immutable"
+  "immutable_verified": true,
+  "rsa_verified": true,
+  "proof_sha256": "EA603055279A7F6C2369AF9DE953A2892E3074996079A36345CB20B16660040C"
 }
