@@ -1,5 +1,5 @@
 """Publish only signed, verified Server2 public artifacts; keep Server1 untouched."""
-import base64, hashlib, io, json, os, re, urllib.error, urllib.parse, urllib.request, xml.etree.ElementTree as ET, zipfile
+import base64, hashlib, io, json, os, re, time, urllib.error, urllib.parse, urllib.request, xml.etree.ElementTree as ET, zipfile
 REPO='jgohdapt/noranjip-updates'
 TAG='server2-remote-0.8.2.2'
 STABLE='server2-remote-stable'
@@ -28,7 +28,20 @@ def release(tag):
         if e.code==404:return None
         raise
 def assets(r):return {a['name']:a for a in api('/releases/'+str(r['id'])+'/assets?per_page=100')}
-def verify(asset,data):require(asset['size']==len(data) and sha(get(asset['browser_download_url']))==sha(data),'ASSET_READBACK')
+def read_asset(asset):
+    # Renaming a release asset can leave the old name's redirect cached at an
+    # edge. Read the new asset with a unique query while retaining hash checks.
+    return get(asset['browser_download_url']+'?asset='+str(asset['id'])+'&verify='+str(time.time_ns()))
+
+def verify(asset,data):
+    require(asset['size']==len(data),'ASSET_SIZE')
+    for attempt in range(6):
+        try:
+            if sha(read_asset(asset))==sha(data):return
+        except urllib.error.HTTPError as e:
+            if e.code not in (404,502,503):raise
+        if attempt<5:time.sleep(2)
+    raise RuntimeError('ASSET_READBACK')
 def upload(r,name,data):
     require(r['tag_name'] in (TAG,STABLE) and name in FILES,'ASSET_SCOPE')
     found=assets(r).get(name)
@@ -78,10 +91,10 @@ def run():
         for name,aid in [('server2-remote-update.exe',640339759),('server2-update-public-key.xml',640339842)]:
             require(name in old and old[name]['id']==aid,'PRESERVE_CHANNEL_ASSET')
         current=old.get('remote-manifest.xml')
-        if current and sha(get(current['browser_download_url']))==sha(data['remote-manifest.xml']):
+        if current and sha(read_asset(current))==sha(data['remote-manifest.xml']):
             verify(current,data['remote-manifest.xml'])
         else:
-            require(current is not None and current['id']==640339693 and sha(get(current['browser_download_url']))=='C95EC0332A6FC6E2E615294E0FE223887F8BDF29606A9D12B2AA8F6519FB13B2','OLD_STABLE_MANIFEST')
+            require(current is not None and current['id']==640339693 and sha(read_asset(current))=='C95EC0332A6FC6E2E615294E0FE223887F8BDF29606A9D12B2AA8F6519FB13B2','OLD_STABLE_MANIFEST')
             stage='remote-manifest-0.8.2.2.xml'
             staged=old.get(stage)
             if staged is None:

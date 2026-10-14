@@ -28,7 +28,7 @@ jobs:
           url = f'https://raw.githubusercontent.com/{repo}/{commit}/.release/server2-0822/publish_server2.py'
           with urllib.request.urlopen(url, timeout=30) as response:
               source = response.read(131073)
-          if len(source) > 131072 or hashlib.sha256(source).hexdigest().upper() != 'F7D4DC2DB3BD75C5C6693F0AC17D021DB61CD5A24E60261F6FF792AF7EA3A76D':
+          if len(source) > 131072 or hashlib.sha256(source).hexdigest().upper() != '49E7577850B52FBCA6382788D04A2E56A8FA1269FB56A9452FFC3225B1A4E190':
               raise SystemExit('PUBLISHER_HASH_REFUSED')
           exec(compile(source, 'publish_server2.py', 'exec'), {'__name__': '__main__'})
           PY
