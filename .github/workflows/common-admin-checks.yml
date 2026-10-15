@@ -1,0 +1,24 @@
+name: Check common administrator publisher
+on:
+  push:
+    branches: [main]
+    paths:
+      - .release/admin-common/tools/**
+      - .release/admin-common/tests/**
+      - .github/workflows/common-admin-checks.yml
+  pull_request:
+    paths: [.release/admin-common/**]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test .release/admin-common/tests/*.test.mjs
