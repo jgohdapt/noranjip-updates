@@ -28,11 +28,18 @@ export function githubTransport(keys,token){
     if(r.status===204)return null;return r.json();
   }
   const release=tag=>api('/releases/tags/'+encodeURIComponent(tag));
+  const assetUrl=asset=>{
+    if(!Number.isSafeInteger(asset.id)||asset.id<=0)throw new Error('Invalid GitHub asset identity');
+    const url=new URL(asset.browser_download_url);
+    // Renaming preserves the canonical URL; a cached redirect may still lead
+    // to the old asset. Bind each public read to the API-confirmed asset id.
+    url.searchParams.set('asset_id',String(asset.id));return url.href;
+  };
   async function assets(r){
     let all=[];for(let page=1;page<=20;page++){const part=await api(`/releases/${r.id}/assets?per_page=100&page=${page}`);all.push(...part);if(part.length<100)return all;}throw new Error('Too many release assets');
   }
   async function verifyAsset(asset,bytes){
-    if(asset.size!==bytes.length||sha256(await publicBytes(asset.browser_download_url,bytes.length+1))!==sha256(bytes))throw new Error('Uploaded asset readback mismatch');return asset;
+    if(asset.size!==bytes.length||sha256(await publicBytes(assetUrl(asset),bytes.length+1))!==sha256(bytes))throw new Error('Uploaded asset readback mismatch');return asset;
   }
   async function upload(r,name,bytes){
     const old=(await assets(r)).find(a=>a.name===name);if(old)return verifyAsset(old,bytes);
@@ -44,7 +51,7 @@ export function githubTransport(keys,token){
     async stable(profile){
       const r=await release(targets[profile].stable);if(!r)throw new Error('Existing stable release missing');
       const a=(await assets(r)).find(a=>a.name==='remote-manifest.xml');if(!a)throw new Error('Existing stable manifest missing; inspect recovery assets');
-      const bytes=await publicBytes(a.browser_download_url,65536);
+      const bytes=await publicBytes(assetUrl(a),65536);
       return {...verifyManifest(bytes,keys[profile],profile),releaseId:r.id,assetId:a.id,bytes};
     },
     async ensureVersion(bundle){

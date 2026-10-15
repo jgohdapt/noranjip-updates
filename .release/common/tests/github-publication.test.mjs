@@ -5,7 +5,7 @@ import {sha256} from '../tools/manifest.mjs';
 
 function mockGitHub(){
  const tag='remote-v2-stable',assets=new Map(),calls=[],releases=new Map([[tag,{id:10,tag_name:tag,draft:false,prerelease:false}]]);
- let next=100,failPromotion=false;
+ let next=100,failPromotion=false,cacheCanonical=false;
  function add(releaseId,name,bytes){const a={id:next++,releaseId,name,size:bytes.length,bytes:Buffer.from(bytes)};assets.set(a.id,a);return a;}
  function publicAsset(a){const r=[...releases.values()].find(r=>r.id===a.releaseId);return {id:a.id,name:a.name,size:a.size,browser_download_url:`https://github.com/jgohdapt/noranjip-updates/releases/download/${r.tag_name}/${a.name}`};}
  const previousBytes=Buffer.from('old signed manifest'),newBytes=Buffer.from('new signed manifest');
@@ -18,6 +18,7 @@ function mockGitHub(){
    assert.equal(options.headers?.Authorization,undefined,'never forward the Actions token to public downloads');
    const parts=u.pathname.split('/'),assetName=decodeURIComponent(parts.pop()),tag=decodeURIComponent(parts.pop()),r=releases.get(tag);
    const a=[...assets.values()].find(a=>a.releaseId===r?.id&&a.name===assetName);
+   if(cacheCanonical&&assetName==='remote-manifest.xml'&&a?.id!==old.id&&u.searchParams.get('asset_id')!==String(a?.id))return new Response(previousBytes,{status:200,headers:{'content-length':String(previousBytes.length)}});
    return new Response(a?.bytes,{status:a?200:404,headers:{'content-length':String(a?.size||0)}});
   }
   assert.equal(options.headers.Authorization,'Bearer synthetic-token');assert.equal(options.redirect,'manual');
@@ -40,7 +41,7 @@ function mockGitHub(){
   }
   throw new Error(`Unexpected mocked API call: ${method} ${u.pathname}`);
  };
- return {fetch,calls,assets,releases,bundle,previous,old,unrelated,newBytes,setFail:()=>{failPromotion=true;}};
+ return {fetch,calls,assets,releases,bundle,previous,old,unrelated,newBytes,setFail:()=>{failPromotion=true;},cacheCanonical:()=>{cacheCanonical=true;}};
 }
 async function withMock(run){const original=globalThis.fetch,f=mockGitHub();globalThis.fetch=f.fetch;try{await run(f,githubTransport({},'synthetic-token'));}finally{globalThis.fetch=original;}}
 
@@ -70,3 +71,8 @@ test('GitHub API redirect is rejected without forwarding authentication',async()
  globalThis.fetch=async(_url,options)=>{calls++;assert.equal(options.redirect,'manual');return new Response(null,{status:302,headers:{location:'https://untrusted.invalid'}});};
  try{await assert.rejects(githubTransport({},'synthetic-token').latest(),/HTTP 302/);assert.equal(calls,1);}finally{globalThis.fetch=original;}
 });
+test('canonical manifest readback is bound to the new asset despite an old cached redirect',()=>withMock(async(f,t)=>{
+ f.cacheCanonical();await t.promote(f.bundle,f.previous,'20261015T120000Z-aaaaaaaa');
+ const publicReads=f.calls.filter(x=>new URL(x.url).hostname==='github.com');
+ assert.ok(publicReads.every(x=>new URL(x.url).searchParams.has('asset_id')));
+}));
