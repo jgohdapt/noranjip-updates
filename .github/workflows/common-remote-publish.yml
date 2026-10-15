@@ -1,0 +1,35 @@
+name: Publish common remote version to both servers
+on:
+  push:
+    branches: [main]
+    paths: [.release/common/current.json]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: noranjip-common-remote-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'jgohdapt/noranjip-updates' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify and publish both signed packages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node .release/common/run-current.mjs
+      - name: Retain publication result even after partial failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: common-remote-publication-result
+          path: publication-result.json
+          if-no-files-found: error
+          retention-days: 90

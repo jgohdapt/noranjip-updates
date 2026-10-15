@@ -6,7 +6,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: noranjip-server2-remote-publication
+  group: noranjip-common-remote-publication
   cancel-in-progress: false
 jobs:
   publish:
