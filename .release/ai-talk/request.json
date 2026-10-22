@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "repository": "jgohdapt/noranjip-updates",
-  "version": "1.2.0",
-  "name": "YellowHouseAITalk-Setup-1.2.0.exe",
-  "size": 114069438,
-  "sha256": "29caed6511a02847ab571785a6cca4e4e8464f3c32c74bc818d6bde8cfd96d17",
-  "sha512": "97sKVIPbrE76hlr7eo+FodkYjxZHmn6cEl1C0kPRxkQRjpyZ6/iVuALOER/xP+wKLGJkUqf6UbKniDv+knr97Q==",
+  "version": "1.4.0",
+  "name": "YellowHouseAITalk-Setup-1.4.0.exe",
+  "size": 114089036,
+  "sha256": "9356776f9eae5f75b6e850ee3fad6ef3c039ac1fbc29f48735401c28be6b2777",
+  "sha512": "HmmBImrf1iThOm6MSTL0zMqYkzpgKjlRKBNUghdp12UEe5bh6tOERvqalU4yshQAmYWtCRKyhNbHp1USth0dyQ==",
   "parts": [
     {
       "name": "part-000.bin",
       "size": 41943040,
-      "sha256": "e4dc13d9699df27d735ea2b51531b36d231f274de55225da8dff8e98d6f5f016"
+      "sha256": "9007ca07489a067a764904a2363bced0299ed62da80a52fce54be651c2b9a36c"
     },
     {
       "name": "part-001.bin",
       "size": 41943040,
-      "sha256": "bafb50a36c275049211a5afae73b83f91ec398e45b9265d16e49cf75ffa3bfb8"
+      "sha256": "92a25fbdfe6df510a120aaac56d776ee622481baf0d116f4f753f99d5d783acc"
     },
     {
       "name": "part-002.bin",
-      "size": 30183358,
-      "sha256": "3b08a1d7b6cceaf1b453ba49678eafc34aa5968dc065eeaa82ba58eb257d2206"
+      "size": 30202956,
+      "sha256": "827656d82c4771b37016a3670bf8ac7ee9537178ecfbaaea4810edd609fb9069"
     }
   ],
-  "createdAt": "2026-10-22T08:38:10.827Z",
-  "notes": "대화방 상단 버튼 정렬, 현재 버전 표시, 실행 중 업데이트 버튼과 다음 실행 시 자동 업데이트, 종료 시 EPIPE 오류 수정, Hermes 봇 이름과 대화 선택 개선.\n\n처음 한 번 설치하면 이후 설치형 앱은 새 버전을 자동으로 확인합니다."
+  "createdAt": "2026-10-22T09:55:09.054Z",
+  "notes": "회원가입·로그인, 아이디별 대화와 설정 분리, 공유 폴더로 여러 PC의 기존 Codex·Claude·Hermes 세션 초대, PC별 멘션, 대화 및 첨부 파일 공유, 집 PC의 공유 방 참여. 기존 자동 업데이트와 종료 오류 수정 포함.\n\n처음 한 번 설치하면 이후 설치형 앱은 새 버전을 자동으로 확인합니다."
 }
