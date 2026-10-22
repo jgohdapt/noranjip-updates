@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "repository": "jgohdapt/noranjip-updates",
-  "version": "1.6.0",
-  "name": "YellowHouseAITalk-Setup-1.6.0.exe",
-  "size": 118635894,
-  "sha256": "f42963fab7b12a8c47899d684638175a78fa8cda3fb1064931c30ceaa6a932b2",
-  "sha512": "PhLvvaCzpngLaENyuH2PAaNwPEy1qxUInblzDs4WTNlfoKqjW5+FUKBMyMlJxn4yBeS4LGyDnDBbsf00lDMyfg==",
+  "version": "1.6.1",
+  "name": "YellowHouseAITalk-Setup-1.6.1.exe",
+  "size": 118638741,
+  "sha256": "17b80c37397607cfa9bfb694fef1145dc5c85d233c02c67a7e880e6f0187e31a",
+  "sha512": "QpCCnVUZNUAK5V7O7iCYQG32uPzzF2GTlPXJJK6611s8HCmQO+M2n9wQhPE50hROlW/1YbeqGf/hDCOLkG3/og==",
   "parts": [
     {
       "name": "part-000.bin",
       "size": 41943040,
-      "sha256": "38383553ff8189330ecd0c985d7ecc30f1960b9a34be16626a20988eefaa0328"
+      "sha256": "15f54c6ac7ff83a6e2497d2eb7de2a223e73f6a96e82676913ea5eda68948b02"
     },
     {
       "name": "part-001.bin",
       "size": 41943040,
-      "sha256": "2872397b6fdd083c2544578cbda1fec89fe792044a8c8ef1d5f796a2fc151b54"
+      "sha256": "0243c377f27a59896a71bcd6a37f053f968f71c4f6ae3880d0709928c44ee735"
     },
     {
       "name": "part-002.bin",
-      "size": 34749814,
-      "sha256": "913e5878bec8586c85e67e26d92db1187821f2ffcffdd0190c011b2b7b6d0eef"
+      "size": 34752661,
+      "sha256": "5910b34107896a2ddcdc272e96fc7fa3fc58ed3802572c9c708aa3e9e38d9348"
     }
   ],
-  "createdAt": "2026-10-22T12:52:15.025Z",
-  "notes": "계정별 채팅방을 분리했습니다. 같은 아이디로 로그인하면 해당 계정이 만든 방과 초대받은 방이 왼쪽 목록에 자동으로 나타납니다. 별도의 들어가기 버튼은 없습니다. 다른 사람과 함께 볼 방만 방 주인이 사람 초대에서 아이디로 초대하세요.\n\n기존 방은 만든 계정 소유로 정리하며, 이전에 같은 공유 폴더에 접속했다는 이유만으로 보이던 다른 계정의 방은 숨깁니다. 모든 사용 PC를 1.6.0으로 업데이트해 주세요. 공유 폴더 연결과 방을 만든 PC의 AI톡 실행은 계속 필요합니다. 계정별 표시는 앱의 접근 규칙이며 NAS 파일 자체를 암호화하거나 폴더 권한을 변경하지 않습니다."
+  "createdAt": "2026-10-22T13:33:21.499Z",
+  "notes": "데스크톱 화면의 크기와 밀도를 정리했습니다. 왼쪽 메뉴·채팅방 목록·상단 도구·상태 카드를 줄여 같은 화면에 대화가 더 많이 보입니다. 본문은 14px로 유지하고 배경·구분선·말풍선 대비를 개선했습니다. 노란 보내기·중단 버튼은 유지합니다.\n\n참가자 버튼으로 오른쪽 패널을 접거나 펼칠 수 있고, 좁은 창에서는 패널을 겹쳐 열어 대화 폭을 확보합니다. 큰 화면은 대화 줄 길이를 제한하고, 시작 창은 모니터 작업 영역에 맞춥니다. 로그인 화면도 같은 크기 기준으로 정리했습니다. 1.6.0의 계정별 채팅방 자동 표시와 업데이트 기능을 유지합니다."
 }
