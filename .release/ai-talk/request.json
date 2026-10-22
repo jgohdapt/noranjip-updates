@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "repository": "jgohdapt/noranjip-updates",
-  "version": "1.6.1",
-  "name": "YellowHouseAITalk-Setup-1.6.1.exe",
-  "size": 118638741,
-  "sha256": "17b80c37397607cfa9bfb694fef1145dc5c85d233c02c67a7e880e6f0187e31a",
-  "sha512": "QpCCnVUZNUAK5V7O7iCYQG32uPzzF2GTlPXJJK6611s8HCmQO+M2n9wQhPE50hROlW/1YbeqGf/hDCOLkG3/og==",
+  "version": "1.6.2",
+  "name": "YellowHouseAITalk-Setup-1.6.2.exe",
+  "size": 118639994,
+  "sha256": "d32c8221c64a55341fe0f90c401db15d1d47bcc7b660266ac457f8187e2e0eb7",
+  "sha512": "XdCwQ+aaQZUNNObQS5FnWS/fKRBUVK4NdZapBzSV/UcOQjaUK4qlxr1yBSGrnTWA68a5pj+moCZi/w1LpHqUqg==",
   "parts": [
     {
       "name": "part-000.bin",
       "size": 41943040,
-      "sha256": "15f54c6ac7ff83a6e2497d2eb7de2a223e73f6a96e82676913ea5eda68948b02"
+      "sha256": "a89f869fd9f3a4830a9f04374c5507ff933655904f0cfea65c01261a5ed5ad67"
     },
     {
       "name": "part-001.bin",
       "size": 41943040,
-      "sha256": "0243c377f27a59896a71bcd6a37f053f968f71c4f6ae3880d0709928c44ee735"
+      "sha256": "8f76d11c3e4aefbdccf6fdfafa09d4d8ef8b68cae27079f4f272c5a3a964f80d"
     },
     {
       "name": "part-002.bin",
-      "size": 34752661,
-      "sha256": "5910b34107896a2ddcdc272e96fc7fa3fc58ed3802572c9c708aa3e9e38d9348"
+      "size": 34753914,
+      "sha256": "23b4c8abe317afad3290752eee7d8fca94e96d9512305c0045a376a82a228ae2"
     }
   ],
-  "createdAt": "2026-10-22T13:33:21.499Z",
-  "notes": "데스크톱 화면의 크기와 밀도를 정리했습니다. 왼쪽 메뉴·채팅방 목록·상단 도구·상태 카드를 줄여 같은 화면에 대화가 더 많이 보입니다. 본문은 14px로 유지하고 배경·구분선·말풍선 대비를 개선했습니다. 노란 보내기·중단 버튼은 유지합니다.\n\n참가자 버튼으로 오른쪽 패널을 접거나 펼칠 수 있고, 좁은 창에서는 패널을 겹쳐 열어 대화 폭을 확보합니다. 큰 화면은 대화 줄 길이를 제한하고, 시작 창은 모니터 작업 영역에 맞춥니다. 로그인 화면도 같은 크기 기준으로 정리했습니다. 1.6.0의 계정별 채팅방 자동 표시와 업데이트 기능을 유지합니다."
+  "createdAt": "2026-10-22T13:47:59.420Z",
+  "notes": "왼쪽 계정 이름이 줄바꿈되어 원 밖으로 잘리던 문제를 수정했습니다. 세 글자 이름을 한 줄로 표시하며, 전체 이름은 마우스를 올리거나 내 설정에서 확인할 수 있습니다.\n\n멘션은 말풍선 색과 겹치는 배경을 제거하고 파란 글씨로 통일했습니다. 왼쪽 대화 메뉴는 노란 배경과 대화 글자를 없애고 검정 말풍선 아이콘만 표시합니다. 보내기·중단 버튼은 기존 노란색을 유지합니다.\n\n상단 제목 표시줄은 관리자프로그램과 같은 35px 높이로 맞추고, 14px 제목과 16px 아이콘을 수직 중앙 정렬했습니다. 로그인 화면에도 동일하게 적용됩니다."
 }
