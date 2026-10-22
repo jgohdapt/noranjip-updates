@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "repository": "jgohdapt/noranjip-updates",
-  "version": "1.8.2",
-  "name": "YellowHouseAITalk-Setup-1.8.2.exe",
-  "size": 118668682,
-  "sha256": "d56db4c18a36fc65ba2136801b1940d4131fbe217d11afd5c74bfe84763139ba",
-  "sha512": "AqM0VqO1lIJlH26qT6GSLM/NYB1Ys5dA7wknl3nSF2EDiSKtW9yEVGjR8+NN3fp5Bn7yfnf8x4xKtTiHFpULUw==",
+  "version": "1.9.0",
+  "name": "YellowHouseAITalk-Setup-1.9.0.exe",
+  "size": 118674456,
+  "sha256": "1c9544b7c7c7c48988d4a3aa0115f3751a4807a36903fd2104bc1f70a1042291",
+  "sha512": "9zYxET9/Bm5bUw65++hWpedtiA56RdVO/eNU6KisDMOCxAUnd4mGaZtd4JIAPE7Ax5eT+uSGFId+R1ho7Ny9Hg==",
   "parts": [
     {
       "name": "part-000.bin",
       "size": 41943040,
-      "sha256": "bd69e5ad14c8090477f7eb98b75e0c2d576bb3e3d357b7155f212ef676189810"
+      "sha256": "952080dd7c607ee681b9deffc66594b43887398f20843f95d902a9f0f3ee91dc"
     },
     {
       "name": "part-001.bin",
       "size": 41943040,
-      "sha256": "ed90d7c0d33460a46f978aa4520e2aa7a3522412b3735962d249c196bb31e1d9"
+      "sha256": "bb791482bcc40f768524fd71d02c566d3b42c8dd352d55ebcb20ff71ad6d91dc"
     },
     {
       "name": "part-002.bin",
-      "size": 34782602,
-      "sha256": "0c7851078b9579c683f7d96d5b19d0a9ea9e7911b07d60e9428a18340d03e172"
+      "size": 34788376,
+      "sha256": "7528372fe30a7173ac5a0edd9ba3971499e5ab5f33beba768b7c8dcf8d4898f5"
     }
   ],
-  "createdAt": "2026-10-22T17:30:45.821Z",
-  "notes": "입력 중인 @멘션과 보낸 메시지의 멘션을 굵은 파란색으로 강조했습니다. 참가자 목록의 @멘션·멘션 선택 목록·답변 대상도 같은 강조로 표시합니다.\n\n초대 ＋, 온라인 상태 점, 참가자 수, YELLOW HOUSE와 관련 강조를 노란색으로 통일했습니다. 작은 글자와 숫자는 흰 배경에서도 읽기 쉬운 진한 골드로 표시합니다.\n\n모든 PC를 1.8.2로 업데이트해 주세요."
+  "createdAt": "2026-10-22T19:11:14.315Z",
+  "notes": "방 메모 · 절약 모드를 추가했습니다. 참가자 패널에서 방 주인이 켜면 짧은 메모와 최신 발언을 전달하고, AI가 필요한 과거 원문만 검색합니다. 사람 요청과 AI 주장을 구분하고 원문을 보존합니다. 자동 요약을 위한 추가 AI 호출과 새 세션 생성은 없습니다.\n\n기존 방은 기본 꺼짐이며 언제든 기존 전달 방식으로 돌아갈 수 있습니다. 짧은 대화는 조회 안내 때문에 전송 문자가 늘 수 있고 실제 토큰 요금은 별도입니다. 공유 방에서 절약 모드를 쓰려면 모든 참가 PC를 1.9.0 이상으로 업데이트해 주세요."
 }
