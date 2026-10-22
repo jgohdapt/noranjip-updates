@@ -1,0 +1,25 @@
+name: Publish AI Talk
+on:
+  push:
+    branches: [main]
+    paths: ['.release/ai-talk/request.json']
+permissions:
+  contents: write
+concurrency:
+  group: yellow-house-ai-talk-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'jgohdapt/noranjip-updates' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Verify pinned AI Talk publisher
+        shell: bash
+        run: |
+          curl --fail --location --retry 3 "https://raw.githubusercontent.com/jgohdapt/noranjip-updates/$GITHUB_SHA/.release/ai-talk/publish.mjs" -o /tmp/ai-talk-publish.mjs
+          echo '5e2506b4cb1e2a1c8c88ae06c7420b37d5a8eb0e03771fda8f9d049e958e1567  /tmp/ai-talk-publish.mjs' | sha256sum --check --strict
+      - name: Publish installer and update channel
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node /tmp/ai-talk-publish.mjs --publish

@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "repository": "jgohdapt/noranjip-updates",
+  "version": "1.2.0",
+  "name": "YellowHouseAITalk-Setup-1.2.0.exe",
+  "size": 114069438,
+  "sha256": "29caed6511a02847ab571785a6cca4e4e8464f3c32c74bc818d6bde8cfd96d17",
+  "sha512": "97sKVIPbrE76hlr7eo+FodkYjxZHmn6cEl1C0kPRxkQRjpyZ6/iVuALOER/xP+wKLGJkUqf6UbKniDv+knr97Q==",
+  "parts": [
+    {
+      "name": "part-000.bin",
+      "size": 41943040,
+      "sha256": "e4dc13d9699df27d735ea2b51531b36d231f274de55225da8dff8e98d6f5f016"
+    },
+    {
+      "name": "part-001.bin",
+      "size": 41943040,
+      "sha256": "bafb50a36c275049211a5afae73b83f91ec398e45b9265d16e49cf75ffa3bfb8"
+    },
+    {
+      "name": "part-002.bin",
+      "size": 30183358,
+      "sha256": "3b08a1d7b6cceaf1b453ba49678eafc34aa5968dc065eeaa82ba58eb257d2206"
+    }
+  ],
+  "createdAt": "2026-10-22T08:38:10.827Z",
+  "notes": "대화방 상단 버튼 정렬, 현재 버전 표시, 실행 중 업데이트 버튼과 다음 실행 시 자동 업데이트, 종료 시 EPIPE 오류 수정, Hermes 봇 이름과 대화 선택 개선.\n\n처음 한 번 설치하면 이후 설치형 앱은 새 버전을 자동으로 확인합니다."
+}
