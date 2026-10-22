@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "repository": "jgohdapt/noranjip-updates",
-  "version": "1.8.1",
-  "name": "YellowHouseAITalk-Setup-1.8.1.exe",
-  "size": 118668705,
-  "sha256": "e61a0bae63182c3d0f46773c4cc5b6061a9cc356e06ae6272b173b1d2c457ee0",
-  "sha512": "/aOkQcarBDZBAR3lULtHN7lvB424djpZkQEEiEJsIVvHauvCExVsNNAvj42FCHFaWdc0PV8n7doKqexof62roQ==",
+  "version": "1.8.2",
+  "name": "YellowHouseAITalk-Setup-1.8.2.exe",
+  "size": 118668682,
+  "sha256": "d56db4c18a36fc65ba2136801b1940d4131fbe217d11afd5c74bfe84763139ba",
+  "sha512": "AqM0VqO1lIJlH26qT6GSLM/NYB1Ys5dA7wknl3nSF2EDiSKtW9yEVGjR8+NN3fp5Bn7yfnf8x4xKtTiHFpULUw==",
   "parts": [
     {
       "name": "part-000.bin",
       "size": 41943040,
-      "sha256": "f9d36ff1e7283547a8016b90a5e779c49fe5883fd48a002a6be05181b9e9b457"
+      "sha256": "bd69e5ad14c8090477f7eb98b75e0c2d576bb3e3d357b7155f212ef676189810"
     },
     {
       "name": "part-001.bin",
       "size": 41943040,
-      "sha256": "15e78428b5ca8c432452e78c85799f6395060b60cbbbf8dfe7bacd0afb1891dd"
+      "sha256": "ed90d7c0d33460a46f978aa4520e2aa7a3522412b3735962d249c196bb31e1d9"
     },
     {
       "name": "part-002.bin",
-      "size": 34782625,
-      "sha256": "4fb35c816839fe963343efe79250e500eb5492653ab83de2122cdf4cd8fdbc62"
+      "size": 34782602,
+      "sha256": "0c7851078b9579c683f7d96d5b19d0a9ea9e7911b07d60e9428a18340d03e172"
     }
   ],
-  "createdAt": "2026-10-22T17:12:48.278Z",
-  "notes": "입력창에서 인식된 @멘션이 입력하는 동안에도 보낸 메시지와 같은 파란색으로 보입니다. 입력창의 커서·선택·한글 입력·되돌리기·붙여넣기 동작은 그대로입니다.\n\n참가자 이름(원래 대화 제목)이 바뀌면 참가자 목록·멘션·답변 작성자 이름이 현재 이름으로 바뀝니다. 이미 보낸 메시지와 쓰던 글은 바뀌지 않으며, 이름 변경으로 쓰던 멘션의 대상이 달라지면 다시 고를 때까지 보내지 않습니다.\n\n보내기를 누르면 내 메시지가 바로 \"전송 중…\"으로 표시되고 입력창이 비워집니다. 실패하거나 응답이 없으면 이유와 다시 보내기(중복 없음)를 보여 주며 자동으로 다시 보내지 않습니다.\n\n진행 표시·체크 상자·선택 표시를 노란색으로 통일했습니다. 모든 PC를 1.8.1로 업데이트해 주세요."
+  "createdAt": "2026-10-22T17:30:45.821Z",
+  "notes": "입력 중인 @멘션과 보낸 메시지의 멘션을 굵은 파란색으로 강조했습니다. 참가자 목록의 @멘션·멘션 선택 목록·답변 대상도 같은 강조로 표시합니다.\n\n초대 ＋, 온라인 상태 점, 참가자 수, YELLOW HOUSE와 관련 강조를 노란색으로 통일했습니다. 작은 글자와 숫자는 흰 배경에서도 읽기 쉬운 진한 골드로 표시합니다.\n\n모든 PC를 1.8.2로 업데이트해 주세요."
 }
