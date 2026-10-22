@@ -1,6 +1,6 @@
 // Runs only in the distribution repository's GitHub Actions job.
 // No credentials, source code, session data, or machine settings are published.
-import fs from 'node:fs';import crypto from 'node:crypto';
+import fs from 'node:fs';import crypto from 'node:crypto';import path from 'node:path';import {pathToFileURL} from 'node:url';
 const repo='jgohdapt/noranjip-updates',base=`https://api.github.com/repos/${repo}`;
 const hash=(b,algorithm='sha256',encoding='hex')=>crypto.createHash(algorithm).update(b).digest(encoding);
 export function verifyRequest(r){
@@ -44,4 +44,4 @@ export async function publish(){
   const final=(await assets(stable)).find(a=>a.name==='latest.yml');await verify(final,metadata);
   console.log('AI_TALK_RELEASE_PUBLISHED '+request.version+' '+version.html_url);
 }
-if(process.argv.includes('--publish'))publish().catch(error=>{console.error(error.message);process.exitCode=1;});
+if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href&&process.argv.includes('--publish'))publish().catch(error=>{console.error(error.message);process.exitCode=1;});

@@ -18,7 +18,7 @@ jobs:
         shell: bash
         run: |
           curl --fail --location --retry 3 "https://raw.githubusercontent.com/jgohdapt/noranjip-updates/$GITHUB_SHA/.release/ai-talk/publish.mjs" -o /tmp/ai-talk-publish.mjs
-          echo '5e2506b4cb1e2a1c8c88ae06c7420b37d5a8eb0e03771fda8f9d049e958e1567  /tmp/ai-talk-publish.mjs' | sha256sum --check --strict
+          echo '3adad4dabe94ec49478a4f82ceb63eeb9847ce7479ac5f4a9ff5273d799b66f0  /tmp/ai-talk-publish.mjs' | sha256sum --check --strict
       - name: Publish installer and update channel
         env:
           GH_TOKEN: ${{ github.token }}
