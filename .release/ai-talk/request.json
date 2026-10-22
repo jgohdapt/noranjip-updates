@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "repository": "jgohdapt/noranjip-updates",
-  "version": "1.4.0",
-  "name": "YellowHouseAITalk-Setup-1.4.0.exe",
-  "size": 114089036,
-  "sha256": "9356776f9eae5f75b6e850ee3fad6ef3c039ac1fbc29f48735401c28be6b2777",
-  "sha512": "HmmBImrf1iThOm6MSTL0zMqYkzpgKjlRKBNUghdp12UEe5bh6tOERvqalU4yshQAmYWtCRKyhNbHp1USth0dyQ==",
+  "version": "1.4.1",
+  "name": "YellowHouseAITalk-Setup-1.4.1.exe",
+  "size": 114089123,
+  "sha256": "6a0d1f65feab65e363354f3eb535e86ace9ccdd8932ee82df8d1a58885dfa3c8",
+  "sha512": "iyLa38aILfiZ4+MkhjKY98Es/L784Y99aUhw7ka3BYwq4ZXn/DuAKE2R4R7IsRqHzkvh1GL/r6+QtR1dmMoL0g==",
   "parts": [
     {
       "name": "part-000.bin",
       "size": 41943040,
-      "sha256": "9007ca07489a067a764904a2363bced0299ed62da80a52fce54be651c2b9a36c"
+      "sha256": "477e6a02a1d4c65bd37c1892032e4f484e418df0dbe5b277a5b086d2a78459fc"
     },
     {
       "name": "part-001.bin",
       "size": 41943040,
-      "sha256": "92a25fbdfe6df510a120aaac56d776ee622481baf0d116f4f753f99d5d783acc"
+      "sha256": "e643559eac0fc0d08d6b25feba7194d9981ecfae6f8ae7272bd0c27a545cb5a6"
     },
     {
       "name": "part-002.bin",
-      "size": 30202956,
-      "sha256": "827656d82c4771b37016a3670bf8ac7ee9537178ecfbaaea4810edd609fb9069"
+      "size": 30203043,
+      "sha256": "0a48e762844dfe125bb33da9e647bf522c803b9aae2fed38f90156ae2a6f4ae4"
     }
   ],
-  "createdAt": "2026-10-22T09:55:09.054Z",
-  "notes": "회원가입·로그인, 아이디별 대화와 설정 분리, 공유 폴더로 여러 PC의 기존 Codex·Claude·Hermes 세션 초대, PC별 멘션, 대화 및 첨부 파일 공유, 집 PC의 공유 방 참여. 기존 자동 업데이트와 종료 오류 수정 포함.\n\n처음 한 번 설치하면 이후 설치형 앱은 새 버전을 자동으로 확인합니다."
+  "createdAt": "2026-10-22T10:19:35.800Z",
+  "notes": "비밀번호 최소 길이를 10자에서 8자로 변경했습니다. 회원가입과 비밀번호 변경에 동일하게 적용하며, 가입 화면에 길이 안내를 표시합니다. 기존 계정·대화·PC 연결 설정은 유지됩니다.\n\n처음 한 번 설치하면 이후 설치형 앱은 새 버전을 자동으로 확인합니다."
 }
