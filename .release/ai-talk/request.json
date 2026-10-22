@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "repository": "jgohdapt/noranjip-updates",
-  "version": "1.5.0",
-  "name": "YellowHouseAITalk-Setup-1.5.0.exe",
-  "size": 118630296,
-  "sha256": "9ac0f9028d55f10019efc7ad41dfe48004abd3c5c5d8a126c64dc7251c6c6d45",
-  "sha512": "1V86vhxQCpUkhVV+IkPp7tDj08/4t8A+t4mN7iW+0UPOvv+yt4JwYO6vcJhz8pDveo0t5RZvrmzNwB1lD/pgVg==",
+  "version": "1.5.1",
+  "name": "YellowHouseAITalk-Setup-1.5.1.exe",
+  "size": 118631509,
+  "sha256": "3ce25dd8049b4d6914cee787843422f18d35d9be3147b798f2e095fa64bedcf5",
+  "sha512": "5iNwHBbUUNX5R/3fvW60sIKcZe7unwiQf/DfsuNpzCFVXC6fIzxB+Dkkvmz2KbLuR3pWycdHylvbV+xK8JNcwA==",
   "parts": [
     {
       "name": "part-000.bin",
       "size": 41943040,
-      "sha256": "071ea0d331141b13b35479ae2b358ee2010483e0f2b15a73156687ebebf1f2f3"
+      "sha256": "0fcf9b8434b5c3f3c33bd7b8c6cdd563b973eacf966527dee51c4aa5f696df00"
     },
     {
       "name": "part-001.bin",
       "size": 41943040,
-      "sha256": "4adb91a37cbd8661a2863202a1bb73fbad70133b152bd3f0193baa54df712355"
+      "sha256": "5685e1e972aadca1a9a7925e91a50c5a03f682c7179338d2bfc4609d3599204a"
     },
     {
       "name": "part-002.bin",
-      "size": 34744216,
-      "sha256": "5d83a17304013381321c2e016f4ee67a3d823824fceba423da0ebd4bb1dcf022"
+      "size": 34745429,
+      "sha256": "3eae0e84cd72ea861c3591509c432e67e3df94c7502f49605db71a4a56694322"
     }
   ],
-  "createdAt": "2026-10-22T11:36:40.133Z",
-  "notes": "X를 누르면 창만 숨기고 트레이에서 PC 연결을 유지합니다. 트레이 클릭으로 다시 열고 우클릭 종료로 완전히 끌 수 있습니다. Claude 앱의 원래 대화 목록과 연결 상태를 구분하고, 원래 대화 열기 및 초대 목록 자동 갱신을 추가했습니다. 연결 대기 중인 Claude는 원래 앱에서 한 번 메시지를 보내 수신 통로를 활성화해야 합니다.\n\nHermes 첫 화면에 연결 정보가 없는 PC에서도 같은 Windows 사용자용 연결 기록과 현재 프로세스 신원을 검증해 기존 봇 목록을 불러오도록 보완했습니다. 로그인 요구나 접근 거절은 유지합니다.\n\n셋업에 선택 설치용 공식 OpenVPN 클라이언트를 포함했습니다. RaiDrive 공유 폴더는 각 PC에서 직접 연결하며, VPN은 필요한 경우에만 사용합니다. 회사 VPN 연결 파일이나 인증 정보는 포함하지 않습니다. 기존 계정·대화·PC 연결 설정은 유지됩니다."
+  "createdAt": "2026-10-22T11:52:23.326Z",
+  "notes": "PC 목록은 연결됨인데 새 공유 방과 메시지를 못 찾는 경우를 보완했습니다. 기존 PC 상태 파일을 통해 방 위치와 같은 ID의 요청을 함께 발견하며 중복 실행을 막습니다. PC 함께 연결에 상대 버전과 수신 상태를 표시합니다. 두 PC 모두 1.5.1로 업데이트하세요.\n\nX를 누르면 창만 숨기고 트레이에서 PC 연결을 유지합니다. 트레이 클릭으로 다시 열고 우클릭 종료로 완전히 끌 수 있습니다. Claude 앱의 원래 대화 목록과 연결 상태를 구분하고, 원래 대화 열기 및 초대 목록 자동 갱신을 추가했습니다. 연결 대기 중인 Claude는 원래 앱에서 한 번 메시지를 보내 수신 통로를 활성화해야 합니다.\n\nHermes 첫 화면에 연결 정보가 없는 PC에서도 같은 Windows 사용자용 연결 기록과 현재 프로세스 신원을 검증해 기존 봇 목록을 불러오도록 보완했습니다. 로그인 요구나 접근 거절은 유지합니다.\n\n셋업에 선택 설치용 공식 OpenVPN 클라이언트를 포함했습니다. RaiDrive 공유 폴더는 각 PC에서 직접 연결하며, VPN은 필요한 경우에만 사용합니다. 회사 VPN 연결 파일이나 인증 정보는 포함하지 않습니다. 기존 계정·대화·PC 연결 설정은 유지됩니다."
 }
