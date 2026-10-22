@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "repository": "jgohdapt/noranjip-updates",
-  "version": "1.4.1",
-  "name": "YellowHouseAITalk-Setup-1.4.1.exe",
-  "size": 114089123,
-  "sha256": "6a0d1f65feab65e363354f3eb535e86ace9ccdd8932ee82df8d1a58885dfa3c8",
-  "sha512": "iyLa38aILfiZ4+MkhjKY98Es/L784Y99aUhw7ka3BYwq4ZXn/DuAKE2R4R7IsRqHzkvh1GL/r6+QtR1dmMoL0g==",
+  "version": "1.4.2",
+  "name": "YellowHouseAITalk-Setup-1.4.2.exe",
+  "size": 114091311,
+  "sha256": "fd5ac2fe2efa17f82f1bb0612048d0cdbb8722b5305b3858281b9ce1531a41d4",
+  "sha512": "hxcH1asDgHk2PcuAP0DbxSzxyrGg4ngnIMB7EBO145C0kkcIwkPR3zdIaTeAATCgmuflUPmHq3c7PFMzKO/r4A==",
   "parts": [
     {
       "name": "part-000.bin",
       "size": 41943040,
-      "sha256": "477e6a02a1d4c65bd37c1892032e4f484e418df0dbe5b277a5b086d2a78459fc"
+      "sha256": "09b718e5910e7426d85d53ca1e3ed55c02c6a30ca8b8cb2636796d0fec14dbd6"
     },
     {
       "name": "part-001.bin",
       "size": 41943040,
-      "sha256": "e643559eac0fc0d08d6b25feba7194d9981ecfae6f8ae7272bd0c27a545cb5a6"
+      "sha256": "ea677d27cb1f52b4d45c6b0f7148333e5bb1f671b75d98c69c3c5d2e18174174"
     },
     {
       "name": "part-002.bin",
-      "size": 30203043,
-      "sha256": "0a48e762844dfe125bb33da9e647bf522c803b9aae2fed38f90156ae2a6f4ae4"
+      "size": 30205231,
+      "sha256": "2fd4489475ba0d8480609a26c0237434a625061bf397eb6542868890affe0114"
     }
   ],
-  "createdAt": "2026-10-22T10:19:35.800Z",
-  "notes": "비밀번호 최소 길이를 10자에서 8자로 변경했습니다. 회원가입과 비밀번호 변경에 동일하게 적용하며, 가입 화면에 길이 안내를 표시합니다. 기존 계정·대화·PC 연결 설정은 유지됩니다.\n\n처음 한 번 설치하면 이후 설치형 앱은 새 버전을 자동으로 확인합니다."
+  "createdAt": "2026-10-22T10:45:46.414Z",
+  "notes": "Hermes BOTS의 기존 봇 전용 대화를 찾아 초대하도록 수정했습니다. 재시작 전 대화 목록 때문에 모든 봇이 닫힌 대화로 표시되던 문제를 해결했습니다. 봇의 모델·대화·승인 정책을 유지하고, 다른 PC의 봇 답변 대기가 공유 채팅을 막지 않도록 개선했습니다. 첫 대화가 없는 봇은 별도로 안내합니다. 기존 계정·대화·PC 연결 설정은 유지됩니다.\n\n처음 한 번 설치하면 이후 설치형 앱은 새 버전을 자동으로 확인합니다."
 }
