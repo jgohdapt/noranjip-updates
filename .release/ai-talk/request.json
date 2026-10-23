@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "repository": "jgohdapt/noranjip-updates",
-  "version": "1.9.4",
-  "name": "YellowHouseAITalk-Setup-1.9.4.exe",
-  "size": 118696611,
-  "sha256": "13980d369a4f164542714da02795911188bd7ce649a47ae2fe0c6684bafd319a",
-  "sha512": "L+ckxfegbOWhfW/baa63B5vPDalLwrAz5KndDod2LvyiuBIs6+wpZgq3KNTIIgJDAGLAE68YnyGHSKxG/wJWJg==",
+  "version": "1.9.5",
+  "name": "YellowHouseAITalk-Setup-1.9.5.exe",
+  "size": 118696900,
+  "sha256": "05ed1e99a299036e55e34a54e42243f123bfe74548fcf12a988b361d842d0047",
+  "sha512": "5gbVXln2qR2uxa3UUcgGthT+Cv/6SKgTWi/5hAziy99Ys71i01zEsPn0Aighz7fva55osu/rSmcewGiw4Du3CA==",
   "parts": [
     {
       "name": "part-000.bin",
       "size": 41943040,
-      "sha256": "5b86497b85e8df6be92f7ae521b2e9e2881ea866840c3af3ad586431e02fcf5b"
+      "sha256": "871ff5c20a0d51c905c5ad3f3a6a32b6b39ea390594578f8b4c74db8359349f0"
     },
     {
       "name": "part-001.bin",
       "size": 41943040,
-      "sha256": "f505ac3aff585ccaf2b04e66c43ce4f7571ec34d514f15b971e1169e61b0f10c"
+      "sha256": "bf2c80aa143fe5c97300380f2a6be9804680116e3beefefa5485f119f18d3516"
     },
     {
       "name": "part-002.bin",
-      "size": 34810531,
-      "sha256": "5c1bff8b0217e3d900a4a16fdb9c5037edf0d2a1a06b3966c721ef8bb2c42060"
+      "size": 34810820,
+      "sha256": "a17f1801ea0fc5b5dcaeb54f8501c5110f605f7c48b01050f6009049d8238cd7"
     }
   ],
-  "createdAt": "2026-10-23T12:35:41.688Z",
-  "notes": "의견 나누기 옆의 “AI 토큰값 줄이기”에서 이 방의 절약 기능을 한 번 눌러 켜거나 끌 수 있습니다. 저장을 확인한 뒤 켜짐·꺼짐을 표시하며, 저장 중·오류·방 주인 권한·답변 대기를 쉽게 안내합니다. 메모는 선택 사항이며 꼭 기억할 내용과 검토 중인 아이디어를 나눠 적을 수 있습니다. 기존 메모·대화 원문·계정·승인·방별 설정을 유지합니다. 반복 전달을 줄이는 효과는 대화에 따라 다르며 실제 토큰 과금 절감을 보장하지 않습니다.\n\n1.9.3의 기존 세션 전달·설치 확인·원문 보존·파일 복구 개선을 포함합니다."
+  "createdAt": "2026-10-23T13:40:18.431Z",
+  "notes": "의견 나누기 옆의 물음표에서 켜기·끄기의 차이와 답변 횟수·시간·토큰 사용 안내를 쉽게 볼 수 있습니다. AI 토큰값 줄이기 도움말에서 앞 이야기를 놓칠 수 있다는 주의 문장을 굵게 표시했습니다. 기존 방별 설정·켜기 안내·메모·대화 전달·계정·승인 동작은 유지합니다.\n\n1.9.4의 한 번 눌러 저장하는 절약 기능과 선택 메모 화면 개선을 포함합니다."
 }
