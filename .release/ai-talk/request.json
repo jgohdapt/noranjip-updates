@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "repository": "jgohdapt/noranjip-updates",
-  "version": "1.9.1",
-  "name": "YellowHouseAITalk-Setup-1.9.1.exe",
-  "size": 118680959,
-  "sha256": "efd2153686ff265a285231c6a450a4c6917dfb965f20f6635adffae09f7b13b3",
-  "sha512": "wjbEdUEKabGHHBMA2dxB1ULfr007ohgy5OvnBPW3/B3EUYqVlShDFrGioGqd0p7ttby7tQSZ1JMGec8Paz4PJQ==",
+  "version": "1.9.2",
+  "name": "YellowHouseAITalk-Setup-1.9.2.exe",
+  "size": 118690562,
+  "sha256": "bf1c6648af45ca3138fde62c795c40eb676e4cf527260cce99050ec483e0a5dc",
+  "sha512": "W1kxjGQC+1qfVawOGzkPChTbSWsjhMiRVQggSL66vFchtgi3pWwOMarFqwm2k+IgYWDL63Ekjs+Ldvz0LySl1g==",
   "parts": [
     {
       "name": "part-000.bin",
       "size": 41943040,
-      "sha256": "432c5c6c96f055c4b0045efc508e762cc13de302ccf7bc46b43abbe700f859de"
+      "sha256": "1f61ab6de29a999e407c753209fd91dc3cca9f74a0e3ed256ae84fe2c2236de0"
     },
     {
       "name": "part-001.bin",
       "size": 41943040,
-      "sha256": "b6ab111419a66fadce9511831ad8bce40576ea8179c3ca46b16c74dde5ac3b20"
+      "sha256": "1735890d092a9228dcf3a3d4f085c2cc8b57805a486e20cea86e5ac7da77b2ab"
     },
     {
       "name": "part-002.bin",
-      "size": 34794879,
-      "sha256": "804bac07e8b34623b1037852db026137f1fee1c2bdc89cf764f982bd71f5a3bf"
+      "size": 34804482,
+      "sha256": "be8e4cd958771ce38eaaf88a7db37583b0b406c1ffce9afe21f44acb7786e5b3"
     }
   ],
-  "createdAt": "2026-10-23T07:27:00.350Z",
-  "notes": "새 Hermes 게이트웨이(하나의 게이트웨이가 모든 봇 프로필을 담당하는 방식)에서도 기존 Bot Chat을 초대할 수 있게 고쳤습니다. 설치된 Hermes의 같은 Windows 사용자 확인 절차로만 연결하며, 사용자·프로필·실행 정보가 맞지 않으면 연결하지 않습니다. 이미 있는 Bot Chat에만 보내고 새 대화를 만들지 않으며, Hermes의 기존 모델·승인 설정은 그대로 적용됩니다.\n\n접수와 답변 완료를 구분해, 해당 요청의 완료가 확인된 답변만 방에 올립니다. 연결이 끊기거나 결과가 불명확하면 '확인 불가'로 표시하고 중복 전송을 막기 위해 자동으로 다시 보내지 않습니다. 이전 Hermes 연결 방식도 그대로 지원합니다. 이번 버전에는 첨부파일 관련 수정이 포함되어 있지 않습니다."
+  "createdAt": "2026-10-23T08:30:07.241Z",
+  "notes": "첨부 파일을 아직 받지 못해도 답변 본문은 한 번 등록되며, 파일 전달 대기·오류와 재시도를 따로 표시합니다. 한 방의 답변 반송이 지연되어 다른 방의 답변까지 막히는 문제도 고쳤습니다. 현재 요청이나 호출에 필요한 파일은 실제 수신 전 AI에 전달하지 않고 보존하며, 별도의 새 텍스트는 이어서 처리할 수 있습니다.\n\n공유 폴더 전달을 우선 사용하고, 새 파일 경로가 보이지 않을 때 기존 PC 수신함으로 작은 조각을 받아 크기와 SHA-256을 확인합니다. 최대 5개·개당 25MB를 유지하며 파일 내용이나 base64를 AI 대화 기록에 넣지 않습니다. 파일 재시도는 본문이나 기존 AI 요청을 중복 실행하지 않습니다. 이 복구 기능을 사용하려면 연결한 양쪽 PC를 1.9.2로 업데이트해 주세요.\n\n기존 세션·계정·중단·권한 경계를 유지하며, 원래 AI 전달 결과가 불확실하면 자동 재전송하지 않습니다. 1.9.1의 Hermes 게이트웨이와 기존 Bot Chat 연결 개선도 포함합니다."
 }
