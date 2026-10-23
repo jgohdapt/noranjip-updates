@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "repository": "jgohdapt/noranjip-updates",
-  "version": "1.9.0",
-  "name": "YellowHouseAITalk-Setup-1.9.0.exe",
-  "size": 118674456,
-  "sha256": "1c9544b7c7c7c48988d4a3aa0115f3751a4807a36903fd2104bc1f70a1042291",
-  "sha512": "9zYxET9/Bm5bUw65++hWpedtiA56RdVO/eNU6KisDMOCxAUnd4mGaZtd4JIAPE7Ax5eT+uSGFId+R1ho7Ny9Hg==",
+  "version": "1.9.1",
+  "name": "YellowHouseAITalk-Setup-1.9.1.exe",
+  "size": 118680959,
+  "sha256": "efd2153686ff265a285231c6a450a4c6917dfb965f20f6635adffae09f7b13b3",
+  "sha512": "wjbEdUEKabGHHBMA2dxB1ULfr007ohgy5OvnBPW3/B3EUYqVlShDFrGioGqd0p7ttby7tQSZ1JMGec8Paz4PJQ==",
   "parts": [
     {
       "name": "part-000.bin",
       "size": 41943040,
-      "sha256": "952080dd7c607ee681b9deffc66594b43887398f20843f95d902a9f0f3ee91dc"
+      "sha256": "432c5c6c96f055c4b0045efc508e762cc13de302ccf7bc46b43abbe700f859de"
     },
     {
       "name": "part-001.bin",
       "size": 41943040,
-      "sha256": "bb791482bcc40f768524fd71d02c566d3b42c8dd352d55ebcb20ff71ad6d91dc"
+      "sha256": "b6ab111419a66fadce9511831ad8bce40576ea8179c3ca46b16c74dde5ac3b20"
     },
     {
       "name": "part-002.bin",
-      "size": 34788376,
-      "sha256": "7528372fe30a7173ac5a0edd9ba3971499e5ab5f33beba768b7c8dcf8d4898f5"
+      "size": 34794879,
+      "sha256": "804bac07e8b34623b1037852db026137f1fee1c2bdc89cf764f982bd71f5a3bf"
     }
   ],
-  "createdAt": "2026-10-22T19:11:14.315Z",
-  "notes": "방 메모 · 절약 모드를 추가했습니다. 참가자 패널에서 방 주인이 켜면 짧은 메모와 최신 발언을 전달하고, AI가 필요한 과거 원문만 검색합니다. 사람 요청과 AI 주장을 구분하고 원문을 보존합니다. 자동 요약을 위한 추가 AI 호출과 새 세션 생성은 없습니다.\n\n기존 방은 기본 꺼짐이며 언제든 기존 전달 방식으로 돌아갈 수 있습니다. 짧은 대화는 조회 안내 때문에 전송 문자가 늘 수 있고 실제 토큰 요금은 별도입니다. 공유 방에서 절약 모드를 쓰려면 모든 참가 PC를 1.9.0 이상으로 업데이트해 주세요."
+  "createdAt": "2026-10-23T07:27:00.350Z",
+  "notes": "새 Hermes 게이트웨이(하나의 게이트웨이가 모든 봇 프로필을 담당하는 방식)에서도 기존 Bot Chat을 초대할 수 있게 고쳤습니다. 설치된 Hermes의 같은 Windows 사용자 확인 절차로만 연결하며, 사용자·프로필·실행 정보가 맞지 않으면 연결하지 않습니다. 이미 있는 Bot Chat에만 보내고 새 대화를 만들지 않으며, Hermes의 기존 모델·승인 설정은 그대로 적용됩니다.\n\n접수와 답변 완료를 구분해, 해당 요청의 완료가 확인된 답변만 방에 올립니다. 연결이 끊기거나 결과가 불명확하면 '확인 불가'로 표시하고 중복 전송을 막기 위해 자동으로 다시 보내지 않습니다. 이전 Hermes 연결 방식도 그대로 지원합니다. 이번 버전에는 첨부파일 관련 수정이 포함되어 있지 않습니다."
 }
