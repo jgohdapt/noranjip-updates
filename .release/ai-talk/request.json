@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "repository": "jgohdapt/noranjip-updates",
-  "version": "1.9.8",
-  "name": "YellowHouseAITalk-Setup-1.9.8.exe",
-  "size": 118702557,
-  "sha256": "8dbf669cc34b503723fa9051675df1092fd15bdfd8f60fb0b9279d5de6e45030",
-  "sha512": "eX4ECuOTkbOEo99s3QTJUp6kSL5JNb5Z6V2VvECgyWiGtbZK2NBSpHpTM6efIhaUV8kd3i8I1v8r76DC3AoC6Q==",
+  "version": "1.9.9",
+  "name": "YellowHouseAITalk-Setup-1.9.9.exe",
+  "size": 118711654,
+  "sha256": "76da8b12b5ce78de298361141e1fd082bc5a279c2340d7db8f2ac6f137939203",
+  "sha512": "NZnAEh/GqYixQKZUrL1NN6e5Rf/vylO5qNPeP7Ch2FPNuCBiEgGmNPpXIXyXVi44g9RpmFsYhA8mD6GW9N31pg==",
   "parts": [
     {
       "name": "part-000.bin",
       "size": 41943040,
-      "sha256": "a25b20d9b7ebe696133af390672effdf050b43836378285bf611ae03708d6cce"
+      "sha256": "90f5bbe2f92829d53791a0b2fc536dce914f716b6e955cb5632d839412438951"
     },
     {
       "name": "part-001.bin",
       "size": 41943040,
-      "sha256": "ccf1425a60d81d3e25bc4ccdceeca1672cc8de05adffec7dc3f1eff722fe6bff"
+      "sha256": "f60672591916c1293cdda07817855b47a9ba7bff32222d1d289c7670f4c2e878"
     },
     {
       "name": "part-002.bin",
-      "size": 34816477,
-      "sha256": "774ca988af4f8000a845ee6e9a7ee32afebedfb3deca759316307754c91e4359"
+      "size": 34825574,
+      "sha256": "6666c8a9d51412164c3e64c918ac9f0f64cd292e8869c9f31f70db82b801e23b"
     }
   ],
-  "createdAt": "2026-10-23T17:36:14.130Z",
-  "notes": "AI 토큰값 줄이기 안내를 보완했습니다. 의견 나누기 옆의 AI 토큰값 줄이기에 시험 중 표시가 나타납니다. 이번 업데이트는 화면 안내 개선이며 새로운 절감 방식을 추가한 것은 아닙니다.\n\n도움말에서 언제 켜고 끄면 좋은지 안내합니다. 이전 내용과 관계없는 새 주제를 시작할 때는 ON을 시도해 볼 수 있고, 이전 결정이나 이유, 원문을 다시 확인해야 할 때는 OFF를 권장합니다.\n\n비용 절감은 보장되지 않으며, 과거 내용을 다시 찾는 과정이 반복되면 토큰과 대기시간이 오히려 늘 수 있습니다. 대화 기록은 그대로 보존되고 메모는 선택 사항입니다.\n\n기본값은 OFF이며 기존 방별 선택, 계정, 원래 AI 세션은 바뀌지 않습니다."
+  "createdAt": "2026-10-24T05:51:20.759Z",
+  "notes": "AI 토큰값 줄이기(절약 모드)에서 과거 발언을 골라 질문할 수 있습니다. 과거 발언의 '이 내용 참고'를 눌러 최대 2개까지 고른 뒤 질문하세요.\n\n고른 발언에 필요한 원문을 연결하고, 같은 내용이 중복으로 전달되거나 조회되던 부분을 보완했습니다. 사람과 AI의 발언 출처 구분은 그대로 유지됩니다. 첨부에 실패하거나 다시 보낼 때에도 작성 중이던 초안이 보존됩니다.\n\n절약 기능은 아직 시험 중이며 직접 선택해서 켜야 동작하고 기본값은 OFF입니다. 기존 방별 선택, 계정, 원래 AI 세션은 그대로 보존됩니다.\n\n실제 비용 절감을 보장하지 않으며, 원문을 다시 조회하는 과정에 따라 토큰과 대기시간이 오히려 늘 수 있습니다. PC 공유방은 참여하는 PC 모두 업데이트하는 것을 권장합니다."
 }
