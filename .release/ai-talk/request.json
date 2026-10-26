@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "repository": "jgohdapt/noranjip-updates",
-  "version": "1.9.9",
-  "name": "YellowHouseAITalk-Setup-1.9.9.exe",
-  "size": 118711654,
-  "sha256": "76da8b12b5ce78de298361141e1fd082bc5a279c2340d7db8f2ac6f137939203",
-  "sha512": "NZnAEh/GqYixQKZUrL1NN6e5Rf/vylO5qNPeP7Ch2FPNuCBiEgGmNPpXIXyXVi44g9RpmFsYhA8mD6GW9N31pg==",
+  "version": "1.9.10",
+  "name": "YellowHouseAITalk-Setup-1.9.10.exe",
+  "size": 118729500,
+  "sha256": "b90b3ca4651dff1512b57e3eeb333316e97dff24f177c7932da20deabdd2cc1d",
+  "sha512": "OCv7Sjw7iNDF/JZw13P7LHIIF9FVVK1Mt3tdiRF8HN6fVvCpUT0IDb8K7LDNZg2FPHUSrEZkp+YXMOq6Mu5k3w==",
   "parts": [
     {
       "name": "part-000.bin",
       "size": 41943040,
-      "sha256": "90f5bbe2f92829d53791a0b2fc536dce914f716b6e955cb5632d839412438951"
+      "sha256": "d793c4034f62dd8e2818467ee12843f88a833a7ceefd7d5a0257f902feb6af58"
     },
     {
       "name": "part-001.bin",
       "size": 41943040,
-      "sha256": "f60672591916c1293cdda07817855b47a9ba7bff32222d1d289c7670f4c2e878"
+      "sha256": "e65788ce7269ca5e9f2d42ce3b9378538dbc37dd32d4cc3ef6e3f109a323e1a5"
     },
     {
       "name": "part-002.bin",
-      "size": 34825574,
-      "sha256": "6666c8a9d51412164c3e64c918ac9f0f64cd292e8869c9f31f70db82b801e23b"
+      "size": 34843420,
+      "sha256": "ed6fff604fb346b4110eb8139783f8a6c11ff8ee4f432d06eb120a29a6fecabe"
     }
   ],
-  "createdAt": "2026-10-24T05:51:20.759Z",
-  "notes": "AI 토큰값 줄이기(절약 모드)에서 과거 발언을 골라 질문할 수 있습니다. 과거 발언의 '이 내용 참고'를 눌러 최대 2개까지 고른 뒤 질문하세요.\n\n고른 발언에 필요한 원문을 연결하고, 같은 내용이 중복으로 전달되거나 조회되던 부분을 보완했습니다. 사람과 AI의 발언 출처 구분은 그대로 유지됩니다. 첨부에 실패하거나 다시 보낼 때에도 작성 중이던 초안이 보존됩니다.\n\n절약 기능은 아직 시험 중이며 직접 선택해서 켜야 동작하고 기본값은 OFF입니다. 기존 방별 선택, 계정, 원래 AI 세션은 그대로 보존됩니다.\n\n실제 비용 절감을 보장하지 않으며, 원문을 다시 조회하는 과정에 따라 토큰과 대기시간이 오히려 늘 수 있습니다. PC 공유방은 참여하는 PC 모두 업데이트하는 것을 권장합니다."
+  "createdAt": "2026-10-26T06:47:08.529Z",
+  "notes": "대화방 목록에서 방을 마우스 오른쪽 버튼으로 누르거나 '…' 메뉴를 열어 정리할 수 있습니다. 방을 만든 사람은 확인 후 방과 대화 기록을 삭제할 수 있고, 초대받은 사람은 방에서 나갈 수 있습니다. 방을 삭제해도 원래 AI 대화(세션)는 그대로 보존됩니다.\n\n읽지 않은 메시지 수가 방 목록에 표시되고, 최근 메시지가 온 방이 위에 오도록 정렬됩니다.\n\n공유 첨부 정보를 읽을 때 일시적인 오류는 다시 시도하고, 실패하면 이유를 더 분명하게 안내하도록 보완했습니다. 이미 멈춘 첨부 대기 작업 때문에 방 삭제가 막히던 문제도 고쳤습니다.\n\n두 PC 사이의 실제 첨부 전송 복구는 아직 확인 중입니다. PC 공유방은 참여하는 PC 모두 업데이트하는 것을 권장합니다.\n\nAI 토큰값 줄이기(절약 모드)는 이번 버전에서 바뀌지 않았으며, 계속 시험 중으로 직접 켜야 동작하고 기본값은 OFF입니다."
 }
