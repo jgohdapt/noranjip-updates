@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "repository": "jgohdapt/noranjip-updates",
-  "version": "1.9.17",
-  "name": "YellowHouseAITalk-Setup-1.9.17.exe",
-  "size": 118785163,
-  "sha256": "1c94b8c1399d3f57eae3c752836296bbad434aca3eed297a3303ffe641569ab1",
-  "sha512": "nHj3pb2NG2IKPGS6vjvfXfBY1fiKJH40lucLoB44UtM5AHzEtnRk5lXENyvQ26+4g17yymojwkMqyGBE/gQAfg==",
+  "version": "1.9.18",
+  "name": "YellowHouseAITalk-Setup-1.9.18.exe",
+  "size": 118785951,
+  "sha256": "1c4ee82a2b792d684d4f51da0d042c742bce424cc68a9349c3640a52cb2fde7d",
+  "sha512": "B1SzxEnyZhmDQfg7fQLB8IS8+HyyBetZpzc9NkK/s5FO45N3sWGgdDmmgIdYWqty0SxxbZds2K+Z1XS7rdfQCg==",
   "parts": [
     {
       "name": "part-000.bin",
       "size": 41943040,
-      "sha256": "78fd646e935f12dfd2fa5a43c9b31caa8a06fd33df9fd57f4699fdab522c8add"
+      "sha256": "cee7abe0e972535663a3098fc4ad28a410e7aa6cadd3750c90f4fc77b0253e49"
     },
     {
       "name": "part-001.bin",
       "size": 41943040,
-      "sha256": "6bc2f84eb27710add5dded5125f78dece62a897f562af35830cf0ca3ecc11004"
+      "sha256": "7df069a54be5e40823619ef0b27be70d339a244639681cba451bf3b53ac4dca3"
     },
     {
       "name": "part-002.bin",
-      "size": 34899083,
-      "sha256": "64cb3f9fbaf2858c691c1e386d559c17dd478acdbc5b6b2a7700a444dd88e620"
+      "size": 34899871,
+      "sha256": "fab22b1ffd2c4764ddf3a851c4094bf400b392439224e04b7d8188b47ede7cdf"
     }
   ],
-  "createdAt": "2026-10-27T10:41:23.690Z",
-  "notes": "합의 토론 최종안의 요약 이미지를 누르면 앱 안에서 크게 볼 수 있습니다. 처음에는 이미지 전체가 화면에 맞춰 보이고, 이미지 위에서 마우스 휠을 돌리면 가리킨 곳을 중심으로 확대·축소(최대 400%)되며, 끌어서 촘촘한 내용 구석구석을 옮겨 볼 수 있습니다. 위쪽 도구 막대의 −/+ 버튼과 화면 맞춤, PNG 내려받기를 쓸 수 있고, × 버튼·Esc·바깥 영역 클릭으로 닫으면 원래 미리보기로 돌아갑니다. 키보드로 미리보기를 고르고 Enter를 눌러도 열립니다.\n\n크게 보기는 이 PC에 이미 저장된 이미지를 다시 보여 줄 뿐이라 열기·확대·이동·내려받기 모두 OpenAI로 아무 요청도 보내지 않고 API 요금도 들지 않습니다. API 키와 이미지는 1.9.16과 같이 이 PC의 해당 계정에만 저장됩니다. 다른 방으로 옮기거나 최종안이 바뀌면 보기 창이 저절로 닫혀 이전 이미지가 남지 않습니다. 이미지를 불러오지 못하면 안내와 다시 불러오기 버튼이 나옵니다.\n\n요약 이미지 만들기, 합의 토론, 시작·업데이트·첨부·방 관리와 AI 토큰값 줄이기(시험 중, 기본 OFF)는 1.9.16과 같습니다."
+  "createdAt": "2026-10-27T19:01:26.080Z",
+  "notes": "Codex 대화에 보낸 요청이 Codex 앱에서 그 대화를 열지 않아도 자동으로 시작되도록 요청합니다. 요청은 지금처럼 원래 Codex 대화의 대기열에 한 번만 접수되고, 접수가 확인된 뒤에만 Codex 앱에 그 대화 ID만 담은 자동 시작 요청(codex://threads/wake/…)을 한 번 보냅니다. 이 요청은 Codex 앱을 앞으로 띄우거나 다른 대화로 화면을 옮기지 않고, 요청 내용·모델·권한·작업 폴더는 링크에 들어가지 않습니다. 이미 작업 중인 Codex 대화에는 대기열 뒤에 붙고 Codex 앱이 자기 순서대로 처리합니다.\n\n대화방에는 실제 상태만 표시합니다. 자동 시작 요청을 보냈으면 'Codex 대기열 접수 · 자동 시작 요청함'이 나오며, 이것은 작업이 시작됐다는 확인이 아닙니다. Codex 앱이 없거나 요청을 받지 못하면 'Codex 대기열에 접수됐지만 자동 시작 요청을 확인하지 못했어요. Codex 앱에서 이 대화를 열면 시작돼요. 다시 보내지 마세요.'가 나오고, 이미 접수된 요청은 다시 보내지 않습니다. 대화 ID 형식이 올바르지 않으면 대기열에 넣기 전에 거절합니다.\n\n합의 토론, 요약 이미지와 크게 보기, 시작·업데이트·첨부·방 관리와 AI 토큰값 줄이기(시험 중, 기본 OFF)는 1.9.17과 같습니다."
 }
