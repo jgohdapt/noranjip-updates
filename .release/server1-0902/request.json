@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "20261030-server1-0902",
+  "scope": "server1-only",
+  "authorization": {
+    "date": "2026-10-30",
+    "server1": "authorized",
+    "server2": "deferred",
+    "note": "User explicitly authorized publishing remote 0.9.0.2 to server1 only; server2 is deferred and not touched by this release."
+  },
+  "profile": "server1",
+  "version": "0.9.0.2",
+  "sourceCommit": "70c33fb136c77ad4e9b61ee14fd9b389a0f32297",
+  "previousVersion": "0.9.0.1",
+  "previousManifestSha256": "6F9D465D99924B4D0860F08F953942B0FEF6D106707E25E371519202AFE1AE09",
+  "manifestSha256": "4234E10CC6989EFBC9E9173CB8C4EEB484266C2A44798C6B320B5B1A20AECEE4"
+}
