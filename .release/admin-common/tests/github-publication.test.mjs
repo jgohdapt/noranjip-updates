@@ -1,6 +1,9 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {githubTransport} from '../tools/github-publication.mjs';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {githubTransport,loadPublication} from '../tools/github-publication.mjs';
 import {sha256} from '../tools/manifest.mjs';
 
 function mockGitHub(){
@@ -83,3 +86,18 @@ test('canonical manifest readback is bound to the new asset despite an old cache
  f.bundle.manifest.profile='server2';await t.promote(f.bundle,previous,'20261015T120000Z-aaaaaaaa');
  assert.ok([...f.assets.values()].some(a=>a.releaseId===71&&a.name==='admin-manifest.xml'));
  }));
+test('server2-only publication loads only the server2 bundle and refuses untargeted server files',t=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'noranjip-admin-target-'));t.after(()=>{if(path.dirname(path.resolve(dir))!==path.resolve(os.tmpdir()))throw Error('Unsafe cleanup');fs.rmSync(dir,{recursive:true,force:true});});
+ const keys=path.join(dir,'keys'),request=path.join(dir,'request');fs.mkdirSync(keys);fs.mkdirSync(request);
+ for(const p of ['server1','server2'])fs.writeFileSync(path.join(keys,p+'.xml'),'public key placeholder');
+ const write=value=>fs.writeFileSync(path.join(request,'request.json'),JSON.stringify(value));
+ const valid={schema:1,id:'20261030T120000Z-bbbbbbbb',sourceCommit:'a'.repeat(40),target:'server2',servers:{server2:{version:'0.3.0.2',manifestSha256:'B'.repeat(64),previousManifestSha256:'C'.repeat(64)}},preserved:{server1:{version:'0.3.0.1',manifestSha256:'D'.repeat(64)}}};
+ write(valid);
+ // Only server2 files are opened: the missing server2 manifest is the first failure.
+ assert.throws(()=>loadPublication(request,keys),e=>e.code==='ENOENT'&&e.path.includes(path.join('server2','admin-manifest.xml')));
+ fs.mkdirSync(path.join(request,'server1'));assert.throws(()=>loadPublication(request,keys),/Untargeted server files are present in the request: server1/);
+ fs.rmdirSync(path.join(request,'server1'));
+ write({...valid,target:'server1'});assert.throws(()=>loadPublication(request,keys),/Unknown administrator release target/);
+ write({...valid,servers:{...valid.servers,server1:valid.servers.server2}});assert.throws(()=>loadPublication(request,keys),/Server set does not match/);
+ write({...valid,target:undefined});assert.throws(()=>loadPublication(request,keys),/Server set does not match/);
+});

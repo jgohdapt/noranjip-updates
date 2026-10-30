@@ -1,4 +1,4 @@
-import {assertSameReleaseVersion} from './common-version.mjs';
+import {assertSameReleaseVersion,targetProfiles,untargetedProfiles} from './common-version.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -98,11 +98,12 @@ export function githubTransport(keys,token){
 }
 
 export function loadPublication(directory,keyDirectory){
-  const request=readJson(path.join(directory,'request.json')),keys={},bundles={};
-  assertSameReleaseVersion(request.servers);
-  for(const profile of ['server1','server2']){
-    const r=request.servers[profile];
-    keys[profile]=fs.readFileSync(path.join(keyDirectory,profile+'.xml'));
+  const request=readJson(path.join(directory,'request.json')),keys={},bundles={},target=request.target??'both';
+  assertSameReleaseVersion(request.servers,target);
+  // Untargeted channels need only their public key for the read-only stable check.
+  for(const profile of ['server1','server2'])keys[profile]=fs.readFileSync(path.join(keyDirectory,profile+'.xml'));
+  for(const profile of untargetedProfiles(target))if(fs.existsSync(path.join(directory,profile)))throw new Error('Untargeted server files are present in the request: '+profile);
+  for(const profile of targetProfiles(target)){
     const manifestBytes=fs.readFileSync(path.join(directory,profile,'admin-manifest.xml'));
     const manifest=verifyManifest(manifestBytes,keys[profile],profile);
     const packageBytes=fs.readFileSync(path.join(directory,profile,manifest.packageName));verifyPackage(packageBytes,manifest);
