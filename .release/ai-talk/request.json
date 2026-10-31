@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "repository": "jgohdapt/noranjip-updates",
-  "version": "1.9.22",
-  "name": "YellowHouseAITalk-Setup-1.9.22.exe",
-  "size": 118803903,
-  "sha256": "66b3bb51aa3ecadf0a928785c267e8825791c7a78788d926fa50b531efa1dca4",
-  "sha512": "zf7B0H7rE9uoBhMHSGzbvrGD0v/YWCxGJYBNVwlIh3BG5TSPHnQzUeMKriEEZQoRXdJW4jKnqCYTei2TRV/gbw==",
+  "version": "1.9.23",
+  "name": "YellowHouseAITalk-Setup-1.9.23.exe",
+  "size": 118804492,
+  "sha256": "ec67a4a041c6ba27e795ce4a1b92dbe0f42a4a308e789c6ddd5902f2cd8ff3e0",
+  "sha512": "0wJ28zj1EGplf19flk7uRJPW+o/RDhdVGqG/w8BoDEcCOjbfmZ3VV9TIUmcUeL5BTOIFLmgO0S+VCzIqx7kD8w==",
   "parts": [
     {
       "name": "part-000.bin",
       "size": 41943040,
-      "sha256": "3f67aad3ab9fac415a981d6cffe8f7c2b8df43d4ce49bb15a46207098d692334"
+      "sha256": "5febce1e0497660c1c09e3460e05583f595ee45334405cb61e16defefa3c71c7"
     },
     {
       "name": "part-001.bin",
       "size": 41943040,
-      "sha256": "6fac4f383d86800ab89c059c6e582587fc2fa6a3e5b3d2a54b375752f8fd7549"
+      "sha256": "c1fc47e3480301e1e6871a8d54a4231cae55d42eaaea926515e51071c8f30d8b"
     },
     {
       "name": "part-002.bin",
-      "size": 34917823,
-      "sha256": "2fccafbb2b0ae25a6e60e81574e8d621ae84dfe669ebe7bc5311abfa08118d13"
+      "size": 34918412,
+      "sha256": "470760e41853839097eef82af6ba80b3e9d55c606d3d0d185a2cd2b32741271f"
     }
   ],
-  "createdAt": "2026-10-30T07:43:06.702Z",
-  "notes": "업데이트를 설치하기 전에 꼭 필요한 이 PC의 대화·설정 저장과 종료 정리가 끝날 때까지 기다린 뒤 설치 프로그램을 시작합니다. 필수 저장에 실패하면 설치하지 않고 실패를 알립니다. 이때 아직 저장되지 않은 일부 내용은 잃을 수 있습니다.\n\n업데이트·재시작 문제를 확인할 수 있도록 기록에 실행 버전과 프로세스 번호(PID)를 남깁니다. 이 동작은 1.9.22를 설치한 뒤의 업데이트부터 적용되며, 이전 반복 설치 문제의 모든 원인을 해결했다는 뜻은 아닙니다. 이미 멈춘 토론은 자동으로 다시 보내지 않습니다.\n\n1.9.21의 대화방 삭제·숨기기·같은 요청 다시 확인 등 그 밖의 기능은 1.9.21과 같습니다."
+  "createdAt": "2026-10-31T05:38:20.989Z",
+  "notes": "Claude에 보낸 뒤에는 Claude 메시지 통로에 넣었고 원래 Claude 대화가 실제로 받았는지는 아직 확인하지 못했다고 안내합니다. 답이 늦어 지연으로 표시되면, 원래 Claude 대화에 확인을 기다리는 메시지가 있는지 보라는 안내를 함께 보여 줍니다. 합의 토론 카드의 기다리는 목록에서도 지연 표시 옆에 이 안내가 나옵니다. 다른 PC의 Claude에 보낼 때는 받는 PC도 1.9.23이어야 이 안내가 붙습니다.\n\nClaude에 보낼 때 선택한 대화의 정확한 세션 ID와 메시지마다 새 메시지 UUID를 함께 보냅니다. 선택한 대화에 실행 중으로 보이는 등록이 여러 개 있으면 그중 하나를 임의로 골라 보내지 않고, 전송하지 않았다고 알립니다.\n\n이 앱은 Claude의 외부 메시지 받기 설정을 몰래 바꾸지 않고, 멈춘 요청을 자동으로 다시 보내지 않습니다. 이 업데이트를 설치해도 Claude 쪽 받기 설정은 바뀌지 않으며, 이전 Claude 전달 지연이 해결됐다는 뜻은 아닙니다.\n\n1.9.22의 업데이트 전 필수 저장 보호(필수 저장이 끝난 뒤 설치, 실패하면 설치하지 않고 알림)와 그 밖의 기능은 1.9.22와 같습니다."
 }
