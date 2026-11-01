@@ -1,0 +1,36 @@
+name: Publish remote 0.9.0.3 to server2 only
+on:
+  push:
+    branches: [main]
+    paths: [.release/server2-0903/request.json]
+permissions:
+  contents: write
+concurrency:
+  group: noranjip-common-remote-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'jgohdapt/noranjip-updates' && github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Offline checks; the committed signed bundle must verify, absence fails
+        run: node --test .release/server2-0903/publish.test.mjs
+      - name: Verify and publish server2 only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node .release/server2-0903/publish.mjs
+      - name: Retain publication result even after failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: server2-0903-publication-result
+          path: server2-0903-publication-result.json
+          if-no-files-found: warn
+          retention-days: 90

@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "id": "20261101T092310Z-8e0751cf",
+  "scope": "server2-only",
+  "profile": "server2",
+  "version": "0.9.0.3",
+  "sourceCommit": "40ec1d55f5bb09d40f3a81e57be06bb05d3dd67b",
+  "previousVersion": "0.9.0.1",
+  "previousManifestSha256": "5D2CA0ADEA7E0C24426BE709F6A3EB7AF2BADDB8808C13CFB538DB25E7312DC2",
+  "authorization": {
+    "date": "2026-11-01",
+    "server2": "authorized",
+    "server1": "unselected"
+  },
+  "unselected": {
+    "server1": {
+      "version": "0.9.0.2",
+      "manifestSha256": "4234E10CC6989EFBC9E9173CB8C4EEB484266C2A44798C6B320B5B1A20AECEE4"
+    }
+  },
+  "signed": {
+    "signerKeySha256": "D778EE902C9E56592558B9A1AA3711EF0E6EE14F8745BE60990F057D7C7F3A48",
+    "tag": "server2-remote-0.9.0.3",
+    "packageName": "remote-0.9.0.3.zip",
+    "packageUrl": "https://github.com/jgohdapt/noranjip-updates/releases/download/server2-remote-0.9.0.3/remote-0.9.0.3.zip",
+    "entry": "노란집 서버2호기 원격PC.exe",
+    "manifestSha256": "BD03F61313B07DA78152DDDBB4D6DE8BA4DC191705CBC3152A6E6E47E61A1934",
+    "packageSha256": "EFDAC8B48A83FF7839163F05CF553F5C7228BD5016BF064CAEE9EB7345154794",
+    "packageBytes": 4308798,
+    "exeSha256": "9B4FB33BF58EE4511AD2D5EE3FBED5F407183A8AFE3DA206C1E55FDDF05CC858",
+    "exeBytes": 4990464
+  }
+}
