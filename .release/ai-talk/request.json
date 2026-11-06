@@ -1,28 +1,28 @@
 {
   "schema": 1,
   "repository": "jgohdapt/noranjip-updates",
-  "version": "1.9.24",
-  "name": "YellowHouseAITalk-Setup-1.9.24.exe",
-  "size": 118806861,
-  "sha256": "dd955a2979b8b6fbe199400521c306a8b5bf73aa8f56f7c71ad4a3068fed5ccf",
-  "sha512": "fwDugdwc5dcicVdKwUj2uD4Zjmo1IkFetZFKORHpfrQqdjduYHIP/bIy7BQJ7aB/DlJMjn2JJhNocnkqgRXHKA==",
+  "version": "1.9.25",
+  "name": "YellowHouseAITalk-Setup-1.9.25.exe",
+  "size": 118808106,
+  "sha256": "3ab69c12e62fd5074f3a18fadedb5c7417d02195cc5fc31007b1e4e93671363a",
+  "sha512": "gLxWvM1HJIqnl6sZP0RysO0/l85l9d68V4s4B9VJcO72wDOoml9NxOUjLiSophiGzc5QJ+Ae+aW6uKcMFSbAhQ==",
   "parts": [
     {
       "name": "part-000.bin",
       "size": 41943040,
-      "sha256": "2ef3803ccf96919ce084e6f2d7ac81c52643f10483719dd9c21083785027ddf7"
+      "sha256": "b7bf31a9d6d225592b9c1704cd689c13951a7869bb27948b4e52bc77f82a6648"
     },
     {
       "name": "part-001.bin",
       "size": 41943040,
-      "sha256": "b04afdac737efc4b5dcd335d74573b8460089b6ce3a87c8efc3393c20ea45ac9"
+      "sha256": "1c3cb47064d85f6973f6243c2e0d3e9fdc9636429057b7b5d028e2c433a46f92"
     },
     {
       "name": "part-002.bin",
-      "size": 34920781,
-      "sha256": "7a490be391b1824404debc8f4bd8a0882b0d5a374db325733ba8ba660105e136"
+      "size": 34922026,
+      "sha256": "2fc146bf47be15006e348ea46ba1a355f6cbe819c9d1bb23991a3eeab4de466d"
     }
   ],
-  "createdAt": "2026-11-01T19:13:57.359Z",
-  "notes": "1·2호기처럼 메시지 목록으로 요청과 답변을 주고받을 수 있는 PC끼리는 정상 전달 시 호환용 inbox 파일을 추가로 쓰지 않습니다. 수신 확인이 늦거나 구버전 PC와 대화할 때는 기존 전달 경로를 사용할 수 있습니다.\n\n토론 답변을 등록할 때 방 주인 PC의 공유 파일을 일시적으로 읽지 못하면 방 상태를 다시 확인합니다. 첨부 없는 답변은 PC에 보관해 두었다가 현재 요청과 참가자가 일치할 때 등록합니다. 방에 등록되기 전에는 대기 상태를 안내합니다."
+  "createdAt": "2026-11-06T10:21:21.103Z",
+  "notes": "이 PC의 Codex 앱 연결 통로가 오래되었거나 연결이 거부되어도 Codex 대화 목록이 사라지지 않습니다. 이때는 같은 Codex 계정의 대화 목록을 읽기 전용으로 확인하며, 대화를 새로 만들거나 시작하지 않습니다. 기존 대화 ID와 대기열 전달 방식은 그대로입니다.\n\n다른 PC의 대화가 함께 보여도 이 PC의 Codex 목록을 읽지 못하면 그 이유를 초대 화면에 안내합니다. Codex가 권한이나 로그인 문제로 요청을 거절하면 다른 경로로 다시 시도하지 않습니다."
 }
