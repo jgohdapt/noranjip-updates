@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "profile": "server1",
+  "version": "0.3.0.17",
+  "sourceCommit": "5863df17bff083c3a4f65f5fac5cff60ef6dd906",
+  "manifestSha256": "23A079AE54F86BCB1DED6467E71B7B797677B0C5C2D894EE324A9447C94FBC32",
+  "packageSha256": "6D87FE799D49B67040A4D4899492D5191C792E6638CDA7CBB364563D06D24905",
+  "fullValidation": true
+}
