@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "id": "20261126T121414Z-4d3891bc",
+  "sourceCommit": "f0ce3d9d17d6a89f87f0eb065ba1956d80e71e2e",
+  "target": "both",
+  "servers": {
+    "server1": {
+      "version": "0.3.0.19",
+      "manifestSha256": "2C8F17257B011E19742FB4D9BAE7827AE995C5E762C073B0A3EF66626F64FBBB",
+      "previousManifestSha256": "21A762A8F2AA8FC84B396F2F294A5C448080ADC2A99E4B37D784A43D057DB6EF"
+    },
+    "server2": {
+      "version": "0.3.0.19",
+      "manifestSha256": "F7BFB82B738D2E9E0CC5D091F78B9C58F1C50905D7E08808F38E2E14989429B3",
+      "previousManifestSha256": "58A6D5C4B533386E4EDA1B3DEA639F817BA153827F13DDDDB8DE6FC3F4EE9252"
+    }
+  }
+}
