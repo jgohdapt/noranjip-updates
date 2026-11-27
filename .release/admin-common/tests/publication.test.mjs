@@ -68,7 +68,7 @@ test('legacy request without target and explicit both target behave identically'
 function server1FollowUp(){
  const f=fixture(),reads=[],s2='E'.repeat(64);
  f.current.server1={version:'0.3.0.19',manifestSha256:'old1'};f.current.server2={version:'0.3.0.20',manifestSha256:s2};
- f.request={schema:1,id:'20261130T020000Z-cccccccc',sourceCommit:f.request.sourceCommit,target:'server1',servers:{server1:{version:'0.3.0.20',previousManifestSha256:'old1',manifestSha256:'new1'}},preserved:{server2:{version:'0.3.0.20',manifestSha256:s2}},follows:{id:'20261128T020000Z-bbbbbbbb',sourceCommit:'b'.repeat(40),manifestSha256:s2}};
+ f.request={schema:1,id:'20261130T020000Z-cccccccc',sourceCommit:f.request.sourceCommit,target:'server1',servers:{server1:{version:'0.3.0.20',previousManifestSha256:'old1',manifestSha256:'new1'}},preserved:{server2:{version:'0.3.0.20',manifestSha256:s2}},follows:{id:'20261128T020000Z-bbbbbbbb',sourceCommit:f.request.sourceCommit,manifestSha256:s2}};
  f.bundles={server1:{...f.bundles.server1,manifest:{profile:'server1',version:'0.3.0.20',manifestSha256:'new1'}}};
  const stable=f.transport.stable;f.transport.stable=async p=>{reads.push(p);return stable(p);};
  return {...f,reads,server2Before:JSON.stringify(f.current.server2)};
@@ -98,7 +98,7 @@ test('server1-only follow-up stops before mutation when server2 moved and report
  await assert.rejects(publishTogether(partial.request,partial.bundles,partial.transport,partial.save));
  assert.equal(partial.saved.at(-1).status,'partial-or-uncertain');assert.equal(partial.saved.at(-1).servers.server1,'promotion-started');assert.equal(JSON.stringify(partial.current.server2),partial.server2Before);
 });
-test('server1-only follow-up without the same-version server2 proof, or with a tampered target, fails before any mutation',async()=>{
+test('server1-only follow-up without the same-version, same-commit server2 proof, or with a tampered target, fails before any mutation',async()=>{
  const cases=[
   f=>{delete f.request.follows;},f=>{f.request.follows=null;},f=>{f.request.follows.id='../20261128T020000Z-bbbbbbbb';},f=>{f.request.follows.id=f.request.id;},
   f=>{f.request.follows.sourceCommit='main';},f=>{f.request.follows.manifestSha256='F'.repeat(64);},f=>{f.request.follows.extra=true;},
@@ -110,6 +110,10 @@ test('server1-only follow-up without the same-version server2 proof, or with a t
   f=>{f.current.server1={version:'0.3.0.20',manifestSha256:'other'};},f=>{f.bundles.server1.manifest.version='0.3.0.21';}
  ];
  for(const change of cases){const f=server1FollowUp();change(f);await assert.rejects(publishTogether(f.request,f.bundles,f.transport,f.save));assert.deepEqual(f.events,[]);assert.equal(f.current.server1.manifestSha256,change===cases[14]?'other':'old1');}
+ // Exact source SHA: server2 staged from one commit and server1 built from another (a later records-only commit included).
+ for(const change of [f=>{f.request.follows.sourceCommit='b'.repeat(40);},f=>{f.request.sourceCommit='b'.repeat(40);f.bundles.server1.sourceCommit='b'.repeat(40);}]){
+  const f=server1FollowUp();change(f);await assert.rejects(publishTogether(f.request,f.bundles,f.transport,f.save),/same version and source commit/);assert.deepEqual(f.events,[]);assert.equal(f.saved.length,0);
+ }
  // A follows field never rides on a both-channel or server2-only request.
  const both=fixture();both.request.follows={id:'20261128T020000Z-bbbbbbbb',sourceCommit:'b'.repeat(40),manifestSha256:'E'.repeat(64)};
  await assert.rejects(publishTogether(both.request,both.bundles,both.transport,both.save),/Only a server1-only release follows/);assert.deepEqual(both.events,[]);

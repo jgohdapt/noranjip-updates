@@ -27,11 +27,11 @@ export function assertSameReleaseVersion(servers,target='both'){
   return version;
 }
 // Only a server1-only release names the server2-only release it follows; the server2 stable it
-// leaves in place must be exactly that release, at the same version.
+// leaves in place must be exactly that release, at the same version, built from the same source commit.
 export function followedRequest(request,version){
   if((request.target??'both')!=='server1'){if(request.follows!==undefined)throw new Error('Only a server1-only release follows another release');return null;}
   const f=request.follows,kept=request.preserved?.server2;
-  if(!f||typeof f!=='object'||Object.keys(f).sort().join()!=='id,manifestSha256,sourceCommit'||!/^\d{8}T\d{6}Z-[0-9a-f]{8}$/.test(f.id)||f.id===request.id||!/^[0-9a-f]{40}$/.test(f.sourceCommit)||!/^[A-F0-9]{64}$/.test(f.manifestSha256)||kept?.manifestSha256!==f.manifestSha256||kept.version!==version)throw new Error('A server1-only release must follow the published server2-only release of the same version');
+  if(!f||typeof f!=='object'||Object.keys(f).sort().join()!=='id,manifestSha256,sourceCommit'||!/^\d{8}T\d{6}Z-[0-9a-f]{8}$/.test(f.id)||f.id===request.id||!/^[0-9a-f]{40}$/.test(f.sourceCommit)||f.sourceCommit!==request.sourceCommit||!/^[A-F0-9]{64}$/.test(f.manifestSha256)||kept?.manifestSha256!==f.manifestSha256||kept.version!==version)throw new Error('A server1-only release must follow the published server2-only release of the same version and source commit');
   return f;
 }
 // The followed public request, its server2 provenance and its signed manifest must all name the same release.

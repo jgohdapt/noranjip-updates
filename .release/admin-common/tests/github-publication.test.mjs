@@ -112,12 +112,12 @@ test('server1-only follow-up loads the followed signed server2-only request befo
   return Buffer.from(`<signedComponentUpdate format="2"><payload>${p.toString('base64')}</payload><signature>${crypto.sign('RSA-SHA256',p,privateKey).toString('base64')}</signature></signedComponentUpdate>`);};
  const keys=path.join(dir,'keys'),requests=path.join(dir,'requests');fs.mkdirSync(keys);for(const p of ['server1','server2'])fs.writeFileSync(path.join(keys,p+'.xml'),key);
  const json=(file,value)=>{fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,JSON.stringify(value));};
- const followedId='20261128T020000Z-bbbbbbbb',followedDir=path.join(requests,followedId),manifestBytes=signed('0.3.0.20'),s2=sha256(manifestBytes),source='b'.repeat(40);
+ const followedId='20261128T020000Z-bbbbbbbb',followedDir=path.join(requests,followedId),manifestBytes=signed('0.3.0.20'),s2=sha256(manifestBytes),source='c'.repeat(40);
  const followed={schema:1,id:followedId,sourceCommit:source,target:'server2',servers:{server2:{version:'0.3.0.20',manifestSha256:s2,previousManifestSha256:'C'.repeat(64)}},preserved:{server1:{version:'0.3.0.19',manifestSha256:'D'.repeat(64)}}};
  const provenance={schema:1,profile:'server2',version:'0.3.0.20',sourceCommit:source,manifestSha256:s2,packageSha256:'A'.repeat(64),fullValidation:true};
  const reset=()=>{fs.rmSync(followedDir,{recursive:true,force:true});json(path.join(followedDir,'request.json'),followed);json(path.join(followedDir,'server2','provenance.json'),provenance);fs.writeFileSync(path.join(followedDir,'server2','admin-manifest.xml'),manifestBytes);};
  const id='20261130T020000Z-cccccccc',request=path.join(requests,id);
- const valid={schema:1,id,sourceCommit:'c'.repeat(40),target:'server1',servers:{server1:{version:'0.3.0.20',manifestSha256:'B'.repeat(64),previousManifestSha256:'E'.repeat(64)}},preserved:{server2:{version:'0.3.0.20',manifestSha256:s2}},follows:{id:followedId,sourceCommit:source,manifestSha256:s2}};
+ const valid={schema:1,id,sourceCommit:source,target:'server1',servers:{server1:{version:'0.3.0.20',manifestSha256:'B'.repeat(64),previousManifestSha256:'E'.repeat(64)}},preserved:{server2:{version:'0.3.0.20',manifestSha256:s2}},follows:{id:followedId,sourceCommit:source,manifestSha256:s2}};
  const load=(value,patch)=>{reset();patch?.();json(path.join(request,'request.json'),value);return ()=>loadPublication(request,keys,options);};
  // The followed proof passes; the first failure is the server1 bundle itself, so server2 files of this request are never opened.
  const firstOwnFile=e=>e.code==='ENOENT'&&e.path.includes(path.join(id,'server1','admin-manifest.xml'));
@@ -129,6 +129,9 @@ test('server1-only follow-up loads the followed signed server2-only request befo
   [{...valid,follows:undefined},null,/must follow the published server2-only release/],
   [{...valid,follows:{...valid.follows,id:'20261128T020000Z-dddddddd'}},null,e=>e.code==='ENOENT'],
   [{...valid,preserved:{server2:{version:'0.3.0.19',manifestSha256:s2}}},null,/must follow the published server2-only release/],
+  // Exact source SHA: a server1 request from any other commit (a later records-only commit included) never follows.
+  [{...valid,follows:{...valid.follows,sourceCommit:'b'.repeat(40)}},()=>{json(path.join(followedDir,'request.json'),{...followed,sourceCommit:'b'.repeat(40)});json(path.join(followedDir,'server2','provenance.json'),{...provenance,sourceCommit:'b'.repeat(40)});},/same version and source commit/],
+  [{...valid,sourceCommit:'b'.repeat(40)},null,/same version and source commit/],
   [valid,()=>json(path.join(followedDir,'request.json'),{...followed,target:'both',servers:{...followed.servers,server1:followed.servers.server2}}),mismatch],
   [valid,()=>json(path.join(followedDir,'request.json'),{...followed,target:'server1'}),mismatch],
   [valid,()=>json(path.join(followedDir,'request.json'),{...followed,id:'20261128T020000Z-dddddddd'}),mismatch],
