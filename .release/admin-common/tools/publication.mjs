@@ -1,5 +1,5 @@
 import {compareVersions} from './manifest.mjs';
-import {assertSameReleaseVersion,targetProfiles,untargetedProfiles} from './common-version.mjs';
+import {assertSameReleaseVersion,followedRequest,targetProfiles,untargetedProfiles} from './common-version.mjs';
 
 // The transport implements GitHub operations. Keeping sequencing independent lets
 // tests prove failure/retry behavior without changing a real update channel.
@@ -7,13 +7,14 @@ export async function publishTogether(request,bundles,transport,save){
   if(request.schema!==1||!/^[0-9a-f]{40}$/.test(request.sourceCommit)||!/^\d{8}T\d{6}Z-[0-9a-f]{8}$/.test(request.id))throw new Error('Invalid release request');
   const target=request.target??'both',profiles=targetProfiles(target),untargeted=untargetedProfiles(target);
   if(Object.keys(bundles).sort().join(',')!==profiles.join(','))throw new Error(target==='both'?'Both server bundles are required':'Bundle set does not match the release target');
-  assertSameReleaseVersion(request.servers,target);
+  const version=assertSameReleaseVersion(request.servers,target);
   const preserved=request.preserved??{};
   if(Object.keys(preserved).sort().join(',')!==untargeted.join(',')||untargeted.some(p=>!/^[A-F0-9]{64}$/.test(preserved[p]?.manifestSha256||'')))throw new Error('Untargeted channel proof does not match the release target');
+  followedRequest(request,version);
   const state={schema:1,id:request.id,sourceCommit:request.sourceCommit,target,status:'checking',servers:Object.fromEntries(profiles.map(p=>[p,'pending'])),...(untargeted.length?{untargeted:Object.fromEntries(untargeted.map(p=>[p,'not-checked']))}:{}),startedUtc:new Date().toISOString()};
   const write=async()=>save({...state,servers:{...state.servers},...(state.untargeted?{untargeted:{...state.untargeted}}:{})});
   // Untargeted channels are only read: their signed stable manifest must stay byte-identical.
-  const checkUntargeted=async label=>{for(const p of untargeted){if((await transport.stable(p)).manifestSha256!==preserved[p].manifestSha256){state.untargeted[p]='changed-outside-this-release';throw new Error(`Untargeted channel changed ${label}: ${p}`);}state.untargeted[p]='unchanged-verified';}};
+  const checkUntargeted=async label=>{for(const p of untargeted){const live=await transport.stable(p);if(live.manifestSha256!==preserved[p].manifestSha256||live.version!==preserved[p].version){state.untargeted[p]='changed-outside-this-release';throw new Error(`Untargeted channel changed ${label}: ${p}`);}state.untargeted[p]='unchanged-verified';}};
   await write();
   try{
     const latest=await transport.latest();

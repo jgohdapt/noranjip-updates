@@ -64,3 +64,54 @@ test('legacy request without target and explicit both target behave identically'
  assert.deepEqual(legacy.events,explicit.events);assert.deepEqual(a.servers,b.servers);assert.equal(a.target,'both');assert.equal(a.untargeted,undefined);
  const preserved=fixture();preserved.request.preserved={server1:{manifestSha256:'A'.repeat(64)}};await assert.rejects(publishTogether(preserved.request,preserved.bundles,preserved.transport,preserved.save));assert.deepEqual(preserved.events,[]);
 });
+// server1-only follow-up: server2 already published this version from a server2-only request.
+function server1FollowUp(){
+ const f=fixture(),reads=[],s2='E'.repeat(64);
+ f.current.server1={version:'0.3.0.19',manifestSha256:'old1'};f.current.server2={version:'0.3.0.20',manifestSha256:s2};
+ f.request={schema:1,id:'20261130T020000Z-cccccccc',sourceCommit:f.request.sourceCommit,target:'server1',servers:{server1:{version:'0.3.0.20',previousManifestSha256:'old1',manifestSha256:'new1'}},preserved:{server2:{version:'0.3.0.20',manifestSha256:s2}},follows:{id:'20261128T020000Z-bbbbbbbb',sourceCommit:'b'.repeat(40),manifestSha256:s2}};
+ f.bundles={server1:{...f.bundles.server1,manifest:{profile:'server1',version:'0.3.0.20',manifestSha256:'new1'}}};
+ const stable=f.transport.stable;f.transport.stable=async p=>{reads.push(p);return stable(p);};
+ return {...f,reads,server2Before:JSON.stringify(f.current.server2)};
+}
+test('server1-only follow-up writes only server1 and proves the followed server2 stable unchanged before and after',async()=>{
+ const f=server1FollowUp(),r=await publishTogether(f.request,f.bundles,f.transport,f.save);
+ assert.equal(r.status,'complete');assert.equal(r.target,'server1');assert.deepEqual(r.servers,{server1:'published'});assert.deepEqual(r.untargeted,{server2:'unchanged-verified'});
+ assert.deepEqual(f.events,['verify:server1','promote:server1']);assert.equal(JSON.stringify(f.current.server2),f.server2Before);
+ assert.equal(f.reads.filter(p=>p==='server2').length,2);assert.ok(f.saved.every(s=>!('server2' in s.servers)));
+ // Retrying the same request is idempotent and still never writes server2.
+ f.events.length=0;const again=await publishTogether(f.request,f.bundles,f.transport,f.save);
+ assert.equal(again.servers.server1,'already-published');assert.deepEqual(f.events,['verify:server1']);assert.equal(JSON.stringify(f.current.server2),f.server2Before);
+});
+test('server1-only follow-up stops before mutation when server2 moved and reports a change during publication truthfully',async()=>{
+ for(const moved of [{version:'0.3.0.21',manifestSha256:'F'.repeat(64)},{version:'0.3.0.21',manifestSha256:'E'.repeat(64)}]){
+  const f=server1FollowUp();f.current.server2=moved;
+  await assert.rejects(publishTogether(f.request,f.bundles,f.transport,f.save),/Untargeted channel changed since preparation: server2/);
+  assert.deepEqual(f.events,[]);assert.equal(f.current.server1.manifestSha256,'old1');assert.equal(f.saved.at(-1).status,'failed-before-promotion');assert.equal(f.saved.at(-1).untargeted.server2,'changed-outside-this-release');
+ }
+ const during=server1FollowUp(),promote=during.transport.promote;during.transport.promote=async(b,c,id)=>{await promote(b,c,id);during.current.server2={version:'0.3.0.21',manifestSha256:'F'.repeat(64)};};
+ await assert.rejects(publishTogether(during.request,during.bundles,during.transport,during.save),/during publication: server2/);
+ assert.equal(during.saved.at(-1).status,'partial-or-uncertain');assert.equal(during.saved.at(-1).servers.server1,'published');
+ const auth=server1FollowUp();auth.transport.ensureVersion=async()=>{throw Error('GitHub POST /releases: HTTP 401');};
+ await assert.rejects(publishTogether(auth.request,auth.bundles,auth.transport,auth.save),/HTTP 401/);
+ assert.equal(auth.saved.at(-1).status,'failed-before-promotion');assert.equal(auth.current.server1.manifestSha256,'old1');assert.equal(JSON.stringify(auth.current.server2),auth.server2Before);
+ const partial=server1FollowUp();partial.transport.promote=async()=>{throw Error('network');};
+ await assert.rejects(publishTogether(partial.request,partial.bundles,partial.transport,partial.save));
+ assert.equal(partial.saved.at(-1).status,'partial-or-uncertain');assert.equal(partial.saved.at(-1).servers.server1,'promotion-started');assert.equal(JSON.stringify(partial.current.server2),partial.server2Before);
+});
+test('server1-only follow-up without the same-version server2 proof, or with a tampered target, fails before any mutation',async()=>{
+ const cases=[
+  f=>{delete f.request.follows;},f=>{f.request.follows=null;},f=>{f.request.follows.id='../20261128T020000Z-bbbbbbbb';},f=>{f.request.follows.id=f.request.id;},
+  f=>{f.request.follows.sourceCommit='main';},f=>{f.request.follows.manifestSha256='F'.repeat(64);},f=>{f.request.follows.extra=true;},
+  f=>{f.request.preserved.server2.version='0.3.0.19';f.current.server2.version='0.3.0.19';},
+  f=>{f.request.preserved.server2.manifestSha256='F'.repeat(64);f.current.server2.manifestSha256='F'.repeat(64);},
+  f=>{f.request.target='server2';},f=>{f.request.target='both';},f=>{delete f.request.target;},
+  f=>{f.bundles.server2={sourceCommit:f.request.sourceCommit,manifest:{profile:'server2',version:'0.3.0.20',manifestSha256:'E'.repeat(64)}};},
+  f=>{f.request.servers.server2={version:'0.3.0.20',previousManifestSha256:'E'.repeat(64),manifestSha256:'E'.repeat(64)};},
+  f=>{f.current.server1={version:'0.3.0.20',manifestSha256:'other'};},f=>{f.bundles.server1.manifest.version='0.3.0.21';}
+ ];
+ for(const change of cases){const f=server1FollowUp();change(f);await assert.rejects(publishTogether(f.request,f.bundles,f.transport,f.save));assert.deepEqual(f.events,[]);assert.equal(f.current.server1.manifestSha256,change===cases[14]?'other':'old1');}
+ // A follows field never rides on a both-channel or server2-only request.
+ const both=fixture();both.request.follows={id:'20261128T020000Z-bbbbbbbb',sourceCommit:'b'.repeat(40),manifestSha256:'E'.repeat(64)};
+ await assert.rejects(publishTogether(both.request,both.bundles,both.transport,both.save),/Only a server1-only release follows/);assert.deepEqual(both.events,[]);
+ const s2=server2Only();s2.request.follows=both.request.follows;await assert.rejects(publishTogether(s2.request,s2.bundles,s2.transport,s2.save),/Only a server1-only release follows/);assert.deepEqual(s2.events,[]);
+});

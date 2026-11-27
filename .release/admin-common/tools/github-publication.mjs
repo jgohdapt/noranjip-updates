@@ -1,4 +1,4 @@
-import {assertSameReleaseVersion,targetProfiles,untargetedProfiles} from './common-version.mjs';
+import {assertSameReleaseVersion,assertFollowedRelease,followedRequest,targetProfiles,untargetedProfiles} from './common-version.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -97,15 +97,21 @@ export function githubTransport(keys,token){
   };
 }
 
-export function loadPublication(directory,keyDirectory){
+// verifyOptions exists for synthetic-key tests; publication uses the pinned key hashes.
+export function loadPublication(directory,keyDirectory,verifyOptions){
   const request=readJson(path.join(directory,'request.json')),keys={},bundles={},target=request.target??'both';
-  assertSameReleaseVersion(request.servers,target);
+  const version=assertSameReleaseVersion(request.servers,target),follows=followedRequest(request,version);
   // Untargeted channels need only their public key for the read-only stable check.
   for(const profile of ['server1','server2'])keys[profile]=fs.readFileSync(path.join(keyDirectory,profile+'.xml'));
   for(const profile of untargetedProfiles(target))if(fs.existsSync(path.join(directory,profile)))throw new Error('Untargeted server files are present in the request: '+profile);
+  if(follows){
+    // The followed server2-only request was published earlier from this same distribution repository.
+    const followed=path.join(path.dirname(directory),follows.id);
+    assertFollowedRelease(follows,version,readJson(path.join(followed,'request.json')),readJson(path.join(followed,'server2','provenance.json')),verifyManifest(fs.readFileSync(path.join(followed,'server2','admin-manifest.xml')),keys.server2,'server2',verifyOptions));
+  }
   for(const profile of targetProfiles(target)){
     const manifestBytes=fs.readFileSync(path.join(directory,profile,'admin-manifest.xml'));
-    const manifest=verifyManifest(manifestBytes,keys[profile],profile);
+    const manifest=verifyManifest(manifestBytes,keys[profile],profile,verifyOptions);
     const packageBytes=fs.readFileSync(path.join(directory,profile,manifest.packageName));verifyPackage(packageBytes,manifest);
     const provenance=readJson(path.join(directory,profile,'provenance.json'));
     if(provenance.sourceCommit!==request.sourceCommit||provenance.profile!==profile||provenance.manifestSha256!==manifest.manifestSha256||provenance.packageSha256!==manifest.packageSha256||provenance.fullValidation!==true)throw new Error('Publication provenance mismatch');
